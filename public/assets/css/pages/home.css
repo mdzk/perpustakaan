@@ -700,3 +700,7 @@ body .font-lora {
     -ms-flex-align: center;
     align-items: center;
 }
+
+.profile-kajur {
+  border-radius: 10px;
+}

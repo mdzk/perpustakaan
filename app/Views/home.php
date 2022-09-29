@@ -155,7 +155,7 @@
     <div class="container review-section">
         <div class="row">
             <div class="col-md-5 px-5 mt-4 mt-md-0">
-                <img src="<?= base_url(); ?>/assets/images/zuriati.jpg" alt="" class="img-fluid">
+                <img class="profile-kajur" src="<?= base_url(); ?>/assets/images/arif.png" alt="" class="img-fluid">
             </div>
             <div class="col-md-7 mt-4 mt-md-0">
                 <div class="text-end">
@@ -165,10 +165,10 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore vel unde voluptatibus, odit, nobis sequi voluptate magni molestias non eius voluptas atque necessitatibus tempora eos recusandae labore quis dolor tenetur.
                 </p>
                 <h5 class="mt-5">
-                    Zuriati, S.Kom., M.Kom.
+                    Arif Makhsun, S.E., M.S.Ak
                 </h5>
                 <p class="company">
-                    Kepala Lab. Software POLINELA
+                    Kepala Jurusan
                 </p>
             </div>
         </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab Software Politeknik Negeri Lampung</title>
+    <title>Perpustakaan Jurusan</title>
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/main/app.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/pages/home.css">
     <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>/assets/images/logo/favicon.png">
@@ -91,7 +91,7 @@
                             </div>
                             <h2 class="footer-text-title text-white">Tentang kami</h2>
                             <nav class="list-unstyled">
-                                Selamat datang kembali di Website Laboratorium Software Politeknik Negeri Lampung, kini website dengan tampilan baru, dengan tampilan yang lebih menarik dan responsive.
+                                Selamat datang kembali di Website Perpustakaan Jurusan, kini website dengan tampilan baru, dengan tampilan yang lebih menarik dan responsive.
                             </nav>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                         <a href="" class="footer-link" style="text-decoration: none">Licenses</a>
                     </nav>
                     <nav class="d-flex flex-lg-row flex-column align-items-center justify-content-center">
-                        <p style="margin: 0">Copyright © <?= date('Y'); ?> Lab. Software POLINELA</p>
+                        <p style="margin: 0">Copyright © <?= date('Y'); ?> Perpustakaan Jurusan</p>
                     </nav>
                 </div>
             </div>

@@ -79,6 +79,9 @@ $routes->get('/login', 'Auth::index', ['as' => 'login']);
 $routes->post('/login/auth', 'Auth::auth', ['as' => 'auth']);
 $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 
+// Opac Section
+$routes->get('/opac', 'Opac::index', ['as' => 'opac']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

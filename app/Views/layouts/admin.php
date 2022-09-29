@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Lab Software</title>
+    <title>Admin - Perpustakaan Jurusan</title>
 
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/main/app.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/main/app-dark.css">
@@ -63,23 +63,23 @@
                         <li class="sidebar-item <?= get_url(3, 'article') ? 'active' : '' ?>">
                             <a href="<?= route_to('article'); ?>" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Article</span>
+                                <span>Artikel</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item <?= get_url(3, 'category') ? 'active' : '' ?>">
                             <a href="<?= route_to('category'); ?>" class='sidebar-link'>
                                 <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Category</span>
+                                <span>Kategori</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-title">Setting</li>
+                        <li class="sidebar-title">Pengaturan</li>
 
                         <li class="sidebar-item <?= get_url(3, 'setting') ? 'active' : '' ?>">
                             <a data-turbolinks="false" href="<?= route_to('setting'); ?>" class='sidebar-link'>
                                 <i class="bi bi-person-fill"></i>
-                                <span>Account</span>
+                                <span>Akun</span>
                             </a>
                         </li>
 
@@ -87,7 +87,7 @@
                             <li class="sidebar-item <?= get_url(3, 'users') ? 'active' : '' ?>">
                                 <a data-turbolinks="false" href="<?= route_to('users'); ?>" class='sidebar-link'>
                                     <i class="bi bi-people-fill"></i>
-                                    <span>Management Users</span>
+                                    <span>Manajemen Pengguna</span>
                                 </a>
                             </li>
                         <?php endif; ?>
@@ -95,7 +95,7 @@
                         <li class="sidebar-item">
                             <a href="<?= route_to('logout'); ?>" class='sidebar-link'>
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Log out</span>
+                                <span>Keluar</span>
                             </a>
                         </li>
 
@@ -115,7 +115,7 @@
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
-                        <p><?= date('Y'); ?> &copy; Lab. Software Politeknik Negeri Lampung</p>
+                        <p><?= date('Y'); ?> &copy; Perpustakaan Jurusan</p>
                     </div>
                 </div>
             </footer>
