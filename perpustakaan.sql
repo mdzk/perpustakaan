@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 06, 2022 at 04:44 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.4
+-- Waktu pembuatan: 29 Sep 2022 pada 13.49
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `labsoftware`
+-- Database: `perpustakaan`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `articles`
+-- Struktur dari tabel `articles`
 --
 
 CREATE TABLE `articles` (
@@ -33,21 +33,15 @@ CREATE TABLE `articles` (
   `description` text NOT NULL,
   `thumbnail` varchar(255) NOT NULL,
   `date` date NOT NULL,
+  `slug` text NOT NULL,
   `id_categories` int(11) NOT NULL,
   `id_users` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `articles`
---
-
-INSERT INTO `articles` (`id_articles`, `title`, `description`, `thumbnail`, `date`, `id_categories`, `id_users`) VALUES
-(1, 'Cara mudah mempercepat windows 11', '<p>edited dfsfds</p>', '1657047291_b316f40e84e3bb23b9fd.png', '2022-07-05', 5, 1);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
@@ -56,7 +50,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `categories`
+-- Dumping data untuk tabel `categories`
 --
 
 INSERT INTO `categories` (`id_categories`, `name`) VALUES
@@ -67,7 +61,7 @@ INSERT INTO `categories` (`id_categories`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -79,7 +73,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id_users`, `name`, `username`, `password`, `roles`) VALUES
@@ -89,7 +83,7 @@ INSERT INTO `users` (`id_users`, `name`, `username`, `password`, `roles`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `visitors`
+-- Struktur dari tabel `visitors`
 --
 
 CREATE TABLE `visitors` (
@@ -100,7 +94,7 @@ CREATE TABLE `visitors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `visitors`
+-- Dumping data untuk tabel `visitors`
 --
 
 INSERT INTO `visitors` (`id_visitors`, `type`, `created_at`, `id_articles`) VALUES
@@ -191,14 +185,38 @@ INSERT INTO `visitors` (`id_visitors`, `type`, `created_at`, `id_articles`) VALU
 (85, 2, '2022-07-06 01:33:15', 1),
 (86, 2, '2022-07-06 01:33:41', 1),
 (87, 2, '2022-07-06 01:34:33', 1),
-(88, 2, '2022-07-06 02:33:17', 1);
+(88, 2, '2022-07-06 02:33:17', 1),
+(89, 2, '2022-09-29 08:53:06', 1),
+(90, 2, '2022-09-29 08:54:23', 1),
+(91, 2, '2022-09-29 09:09:34', 1),
+(92, 2, '2022-09-29 09:10:16', 1),
+(93, 2, '2022-09-29 09:10:16', 1),
+(94, 2, '2022-09-29 09:14:08', 3),
+(95, 2, '2022-09-29 09:19:46', 1),
+(96, 2, '2022-09-29 09:20:23', 1),
+(97, 2, '2022-09-29 09:20:30', 1),
+(98, 2, '2022-09-29 09:20:34', 1),
+(99, 2, '2022-09-29 09:20:41', 1),
+(100, 2, '2022-09-29 09:21:46', 3),
+(101, 2, '2022-09-29 09:22:01', 1),
+(102, 2, '2022-09-29 09:22:27', 1),
+(103, 2, '2022-09-29 09:26:13', 1),
+(104, 2, '2022-09-29 09:27:52', 1),
+(105, 2, '2022-09-29 09:31:17', 1),
+(106, 2, '2022-09-29 09:48:13', 1),
+(107, 2, '2022-09-29 10:48:15', 1),
+(108, 2, '2022-09-29 10:48:45', 3),
+(109, 2, '2022-09-29 10:49:00', 1),
+(110, 2, '2022-09-29 10:56:06', 1),
+(111, 2, '2022-09-29 10:59:10', 1),
+(112, 2, '2022-09-29 11:32:38', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `articles`
+-- Indeks untuk tabel `articles`
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id_articles`),
@@ -206,50 +224,50 @@ ALTER TABLE `articles`
   ADD KEY `id_users` (`id_users`);
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_categories`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_users`);
 
 --
--- Indexes for table `visitors`
+-- Indeks untuk tabel `visitors`
 --
 ALTER TABLE `visitors`
   ADD PRIMARY KEY (`id_visitors`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `articles`
+-- AUTO_INCREMENT untuk tabel `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id_articles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_articles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `visitors`
+-- AUTO_INCREMENT untuk tabel `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
