@@ -95,7 +95,7 @@
                     </div>
 
                     <button class="btn btn-card">
-                        Cari
+                        Cari Buku
                     </button>
                 </div>
             </div>
@@ -124,8 +124,6 @@
         <div class="row section scrolling-wrapper flex-row flex-nowrap mt-3 img-explore-2 mx-2">
 
             <?php
-
-            use function App\Controllers\truncateString;
 
             foreach ($biblios as $biblio) : ?>
                 <div class="col-lg-4 col-md-6 col-sm-12">

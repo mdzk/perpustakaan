@@ -81,6 +81,8 @@ $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 
 // Opac Section
 $routes->get('/opac', 'Opac::index', ['as' => 'opac']);
+$routes->post('/opac/proses', 'Opac::proses');
+$routes->get('/opac/search/(:segment)', 'Opac::search/$1', ['as' => 'home-opac-search']);
 
 /*
  * --------------------------------------------------------------------
