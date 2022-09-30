@@ -10,12 +10,12 @@
         <div class="row">
             <div class="col-lg-6 px-md-0 my-auto position-relative">
                 <div class="headline">
-                    Termukan buku secara <span class="cl-light-blue">Spesifik</span>
+                    Temukan buku secara <span class="cl-light-blue">Spesifik</span>
                 </div>
                 <div class="sub-headline">
                     Cari buku yang kamu cari disini secara spesifik!
                 </div>
-                <div class="row four-point">
+                <!-- <div class="row four-point">
                     <div class="col-md-6">
                         <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Header/HeaderFinance-1/Vector.png" alt="vector" class="me-3"> Licensed & Regulated
                     </div>
@@ -28,33 +28,33 @@
                     <div class="col-md-6">
                         <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Header/HeaderFinance-1/Vector.png" alt="vector" class="me-3"> Across 180+ Countries
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-6 mt-5 mt-md-0">
                 <div class="card">
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">Judul</span>
-                            <input type="text" class="form-control mt-2" placeholder="Laskar Pelangi">
+                            <input name="title" type="text" class="form-control mt-2" placeholder="Laskar Pelangi">
                         </label>
                     </div>
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">Pengarang</span>
-                            <input type="text" class="form-control mt-2" placeholder="Andrea Hirata">
+                            <input name="author_name" type="text" class="form-control mt-2" placeholder="Andrea Hirata">
                         </label>
                     </div>
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">Subyek</span>
-                            <input type="text" class="form-control mt-2" placeholder="Masukkan Subyek">
+                            <input name="topic" type="text" class="form-control mt-2" placeholder="Masukkan Subyek">
                         </label>
                     </div>
 
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">ISBN/ISSN</span>
-                            <input type="text" class="form-control mt-2" placeholder="Masukkan ISBN/ISSN">
+                            <input name="isbn_issn" type="text" class="form-control mt-2" placeholder="Masukkan ISBN/ISSN">
                         </label>
                     </div>
 
@@ -62,10 +62,10 @@
                         <label for="input" class="w-100">
                             <span class="input-title">GMD</span>
                             <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option selected>Semua GMD</option>
+                                <?php foreach($gmds as $gmd): ?>
+                                    <option value="<?= $gmd['gmd_id']; ?>"><?= $gmd['gmd_name']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </label>
                     </div>
@@ -74,10 +74,10 @@
                         <label for="input" class="w-100">
                             <span class="input-title">Tipe Koleksi</span>
                             <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option selected>Semua Tipe</option>
+                                <?php foreach($coll_types as $coll_type): ?>
+                                    <option value="<?= $coll_type['coll_type_id']; ?>"><?= $coll_type['coll_type_name']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </label>
                     </div>
@@ -86,10 +86,10 @@
                         <label for="input" class="w-100">
                             <span class="input-title">Lokasi</span>
                             <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option selected>Semua Lokasi</option>
+                                <?php foreach($locations as $location): ?>
+                                    <option value="<?= $location['location_id']; ?>"><?= $location['location_name']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </label>
                     </div>

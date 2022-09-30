@@ -37,28 +37,28 @@
                     </div>
                     <h3 class="icon-title text-white">Buku Terdaftar</h3>
                     <p class="icon-caption">
-                        Kami akan membantu untuk<br />
-                        melakukan sertifikasi Internasional.
+                        Tersedia buku-buku<br />
+                        best seller untuk kamu baca.
                     </p>
                 </div>
                 <div class="col-lg-4 column">
                     <div class="icon">
                         <img src="<?= base_url(); ?>/assets/images/Content-2-9.png" alt="" />
                     </div>
-                    <h3 class="icon-title text-white">Gratis Hosting</h3>
+                    <h3 class="icon-title text-white">Fasilitas</h3>
                     <p class="icon-caption">
-                        Dapatkan layanan hosting<br />
-                        untuk bagi mahasiswa Manajemen Informatika.
+                        Nikmati fasilitas<br />
+                        dari kami, untuk kenyaman kamu.
                     </p>
                 </div>
                 <div class="col-lg-4 column">
                     <div class="icon">
                         <img src="<?= base_url(); ?>/assets/images/Content-2-10.png" alt="" />
                     </div>
-                    <h3 class="icon-title text-white">Form Control Laboratorium</h3>
+                    <h3 class="icon-title text-white">Konsultasi</h3>
                     <p class="icon-caption">
-                        Bantu kami untuk mengontrol<br />
-                        agar menjadi lebih baik.
+                        Memudahkan anda terkait<br />
+                        buku yang anda minati.
                     </p>
                 </div>
             </div>
@@ -72,15 +72,15 @@
                     </div>
                     <div class="flex-grow-1 text-lg-start text-center card-text">
                         <h3 class="card-title text-white">
-                            Hosting website mu sekarang, Gratis!
+                            Baca buku sekarang, Gratis!
                         </h3>
                         <p class="card-caption">
-                            Khusus untuk kamu yang ingin mendapatkan hosting gratis,<br class="d-none d-lg-block" />
-                            syarat dan ketentuan berlaku.
+                            Khusus untuk kamu yang ingin yang ingin membaca,<br class="d-none d-lg-block" />
+                            yuk! jelajahi lebih banyak buku.
                         </p>
                     </div>
                     <div class="card-btn-space">
-                        <button style="width: max-content;" class="btn btn-card text-white">Coba Sekarang</button>
+                        <a href="<?= route_to('opac'); ?>" style="width: max-content;" class="btn btn-card text-white">Baca Sekarang</a>
                     </div>
                 </div>
             </div>

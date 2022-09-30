@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\BiblioModel;
+use App\Models\CollTypeModel;
+use App\Models\GmdModel;
+use App\Models\LocationModel;
 use App\Models\VisitorsModel;
 
 class Opac extends BaseController
@@ -18,8 +21,15 @@ class Opac extends BaseController
         ]);
 
         $biblio = new BiblioModel();
+        $gmd = new GmdModel();
+        $coll_type = new CollTypeModel();
+        $location = new LocationModel();
+
         $data = [
             'biblios' => $biblio->orderBy('input_date', 'asc')->limit(5)->find(),
+            'gmds' => $gmd->findAll(),
+            'coll_types' => $coll_type->findAll(),
+            'locations' => $location->findAll(),
         ];
 
         return view('opac/home', $data);
