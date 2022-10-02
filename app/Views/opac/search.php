@@ -46,7 +46,11 @@
                         <div class="card-content">
                             <img class="card-img-top img-fluid" style="object-fit: cover;" src="http://localhost/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
                             <div class="card-body">
-                                <span class="badge bg-light-success my-2"><?= $biblio['title']; ?></span>
+                                <?php foreach ($authors as $author): ?>
+                                    <?php if($biblio['biblio_id'] == $author['biblio_id']): ?>
+                                        <span class="badge bg-light-success my-2"> <?= $author['author_name']; ?> </span>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                                 <h4 class="card-title mb-3"><a href=""><?= $biblio['title']; ?></a></h4>
                             </div>
                         </div>

@@ -38,8 +38,6 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/barcode', 'Barcode::index');
-$routes->get('/enter', 'Barcode::enter', ['as' => 'barcode-enter']);
 $routes->get('/article', 'Home::article', ['as' => 'home-article']);
 $routes->get('/article/(:segment)', 'Home::detail/$1', ['as' => 'home-article-detail']);
 $routes->get('/search/(:segment)', 'Home::search/$1', ['as' => 'home-article-search']);
@@ -83,6 +81,8 @@ $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 $routes->get('/opac', 'Opac::index', ['as' => 'opac']);
 $routes->post('/opac/proses', 'Opac::proses');
 $routes->get('/opac/search/(:segment)', 'Opac::search/$1', ['as' => 'home-opac-search']);
+$routes->post('/opac/advanced/proses', 'Opac::advancedProses');
+$routes->get('/opac/advanced/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'Opac::advanced/$1/$2/$3/$4/$5/$6/$7', ['as' => 'home-opac-advanced']);
 
 /*
  * --------------------------------------------------------------------

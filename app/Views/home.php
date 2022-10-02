@@ -119,9 +119,6 @@
                             <div class="card-body">
                                 <span class="badge bg-light-success my-2"><?= $article['name']; ?></span>
                                 <h4 class="card-title mb-3"><a href="<?= base_url(); ?>/article/<?= $article['slug']; ?>"><?= $article['title']; ?></a></h4>
-                                <p class="card-text">
-                                    <?php print(truncateString($article['description'], 60, true) . "\n"); ?>
-                                </p>
                             </div>
                         </div>
                     </div>

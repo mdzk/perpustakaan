@@ -21,18 +21,6 @@ class Home extends BaseController
             'articles' => $article->join('categories', 'categories.id_categories = articles.id_categories')->limit(5)->orderBy('date', 'desc')->find(),
         ];
 
-        function truncateString($str, $chars, $to_space, $replacement = "...")
-        {
-            if ($chars > strlen($str)) return $str;
-
-            $str = substr($str, 0, $chars);
-            $space_pos = strrpos($str, " ");
-            if ($to_space && $space_pos >= 0)
-                $str = substr($str, 0, strrpos($str, " "));
-
-            return ($str . $replacement);
-        }
-
         return view('home', $data);
     }
 
@@ -42,18 +30,6 @@ class Home extends BaseController
         $data = [
             'articles' => $article->join('categories', 'categories.id_categories = articles.id_categories')->orderBy('date', 'desc')->findAll(),
         ];
-
-        function truncateString($str, $chars, $to_space, $replacement = "...")
-        {
-            if ($chars > strlen($str)) return $str;
-
-            $str = substr($str, 0, $chars);
-            $space_pos = strrpos($str, " ");
-            if ($to_space && $space_pos >= 0)
-                $str = substr($str, 0, strrpos($str, " "));
-
-            return ($str . $replacement);
-        }
 
         return view('article', $data);
     }
@@ -86,17 +62,6 @@ class Home extends BaseController
 
     public function search($keyword)
     {
-        function truncateString($str, $chars, $to_space, $replacement = "...")
-        {
-            if ($chars > strlen($str)) return $str;
-
-            $str = substr($str, 0, $chars);
-            $space_pos = strrpos($str, " ");
-            if ($to_space && $space_pos >= 0)
-                $str = substr($str, 0, strrpos($str, " "));
-
-            return ($str . $replacement);
-        }
 
         $article = new ArticlesModel();
         if ($keyword == '') {

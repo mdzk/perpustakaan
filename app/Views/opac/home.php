@@ -32,6 +32,8 @@
             </div>
             <div class="col-lg-6 mt-5 mt-md-0">
                 <div class="card">
+                    <form action="<?= base_url(); ?>/opac/advanced/proses" method="post">
+                    
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">Judul</span>
@@ -61,10 +63,10 @@
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">GMD</span>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Semua GMD</option>
+                            <select name="gmd" class="form-select" id="inputGroupSelect01">
+                                <option value="" selected>Semua GMD</option>
                                 <?php foreach($gmds as $gmd): ?>
-                                    <option value="<?= $gmd['gmd_id']; ?>"><?= $gmd['gmd_name']; ?></option>
+                                    <option value="<?= $gmd['gmd_name']; ?>"><?= $gmd['gmd_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </label>
@@ -73,10 +75,10 @@
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">Tipe Koleksi</span>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Semua Tipe</option>
+                            <select name="coll_type" class="form-select" id="inputGroupSelect01">
+                                <option value="" selected>Semua Tipe</option>
                                 <?php foreach($coll_types as $coll_type): ?>
-                                    <option value="<?= $coll_type['coll_type_id']; ?>"><?= $coll_type['coll_type_name']; ?></option>
+                                    <option value="<?= $coll_type['coll_type_name']; ?>"><?= $coll_type['coll_type_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </label>
@@ -85,10 +87,10 @@
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">
                             <span class="input-title">Lokasi</span>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Semua Lokasi</option>
+                            <select name="location" class="form-select" id="inputGroupSelect01">
+                                <option value="" selected>Semua Lokasi</option>
                                 <?php foreach($locations as $location): ?>
-                                    <option value="<?= $location['location_id']; ?>"><?= $location['location_name']; ?></option>
+                                    <option value="<?= $location['location_name']; ?>"><?= $location['location_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </label>
@@ -97,6 +99,7 @@
                     <button class="btn btn-card">
                         Cari Buku
                     </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -131,7 +134,11 @@
                         <div class="card-content">
                             <img class="card-img-top img-fluid" style="object-fit: cover;" src="http://localhost/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
                             <div class="card-body">
-                                <span class="badge bg-light-success my-2"> <?= $biblio['title']; ?> </span>
+                                <?php foreach ($authors as $author): ?>
+                                    <?php if($biblio['biblio_id'] == $author['biblio_id']): ?>
+                                        <span class="badge bg-light-success my-2"> <?= $author['author_name']; ?> </span>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                                 <h4 class="card-title mb-3"><a href=""><?= $biblio['title']; ?> </a></h4>
                             </div>
                         </div>
