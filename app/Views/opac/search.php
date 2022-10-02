@@ -18,7 +18,7 @@
                                             <div class="input-group-prepend">
                                                 <i class="bi bi-search me-1"></i>
                                             </div>
-                                            <input type="text" name="q" class="form-control border-0 input-text" placeholder="Cari buku ..." required>
+                                            <input type="text" name="title" class="form-control border-0 input-text" placeholder="Cari buku ..." required>
                                         </div>
                                     </div>
                                     <div class="col-4 px-0 px-md-3">
@@ -41,17 +41,12 @@
             <?php
 
             foreach ($biblios as $biblio) : ?>
-                <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
                         <div class="card-content">
                             <img class="card-img-top img-fluid" style="object-fit: cover;" src="http://localhost/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
                             <div class="card-body">
-                                <?php foreach ($authors as $author): ?>
-                                    <?php if($biblio['biblio_id'] == $author['biblio_id']): ?>
-                                        <span class="badge bg-light-success my-2"> <?= $author['author_name']; ?> </span>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                                <h4 class="card-title mb-3"><a href=""><?= $biblio['title']; ?></a></h4>
+                                <p class="fs-6 text mb-3"><a href=""><?= $biblio['title']; ?></a></p>
                             </div>
                         </div>
                     </div>

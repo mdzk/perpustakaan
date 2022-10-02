@@ -32,7 +32,7 @@
             </div>
             <div class="col-lg-6 mt-5 mt-md-0">
                 <div class="card">
-                    <form action="<?= base_url(); ?>/opac/advanced/proses" method="post">
+                    <form action="<?= base_url(); ?>/opac/proses" method="post">
                     
                     <div class="input-group mb-4">
                         <label for="input" class="w-100">

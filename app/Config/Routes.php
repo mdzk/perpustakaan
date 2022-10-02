@@ -80,9 +80,7 @@ $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 // Opac Section
 $routes->get('/opac', 'Opac::index', ['as' => 'opac']);
 $routes->post('/opac/proses', 'Opac::proses');
-$routes->get('/opac/search/(:segment)', 'Opac::search/$1', ['as' => 'home-opac-search']);
-$routes->post('/opac/advanced/proses', 'Opac::advancedProses');
-$routes->get('/opac/advanced/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'Opac::advanced/$1/$2/$3/$4/$5/$6/$7', ['as' => 'home-opac-advanced']);
+$routes->get('/opac/search/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'Opac::search/$1/$2/$3/$4/$5/$6/$7', ['as' => 'home-opac-search']);
 
 /*
  * --------------------------------------------------------------------
