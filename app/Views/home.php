@@ -72,15 +72,15 @@
                     </div>
                     <div class="flex-grow-1 text-lg-start text-center card-text">
                         <h3 class="card-title text-white">
-                            Baca buku sekarang, Gratis!
+                            Donasikan buku kamu sekarang!
                         </h3>
                         <p class="card-caption">
-                            Khusus untuk kamu yang ingin yang ingin membaca,<br class="d-none d-lg-block" />
-                            yuk! jelajahi lebih banyak buku.
+                        <!-- <br class="d-none d-lg-block" /> -->
+                            Ayo dukung gerakan literasi dengan mendonasikan buku kamu sekarang!
                         </p>
                     </div>
                     <div class="card-btn-space">
-                        <a href="<?= route_to('opac'); ?>" style="width: max-content;" class="btn btn-card text-white">Baca Sekarang</a>
+                        <a href="" style="width: max-content;" class="btn btn-card text-white">Donasi buku</a>
                     </div>
                 </div>
             </div>

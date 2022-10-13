@@ -77,4 +77,9 @@ class Home extends BaseController
             return view('search', $data);
         }
     }
+
+    public function donate()
+    {
+        return view('opac/donate');
+    }
 }

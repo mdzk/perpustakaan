@@ -39,33 +39,6 @@ class Opac extends BaseController
         return view('opac/home', $data);
     }
 
-    // public function proses()
-    // {
-    //     $keyword = $this->request->getVar('q');
-    //     return redirect()->to("opac/search/$keyword");
-    // }
-
-    // public function search($keyword)
-    // {
-
-    //     $mst_author = new MstAuthorModel();
-    //     $biblio = new BiblioModel();
-    //     if ($keyword == '-') {
-    //         $data = [
-    //             'biblios' => $biblio->orderBy('input_date', 'desc')->findAll(),
-    //             'authors' => $mst_author->join('biblio_author', 'biblio_author.author_id = mst_author.author_id')->join('biblio', 'biblio_author.biblio_id = biblio.biblio_id')->find()
-    //         ];
-    //         return view('opac/search', $data);
-    //     } else {
-    //         $data = [
-    //             'biblios' => $biblio->orderBy('input_date', 'desc')->like('title', $keyword)->findAll(),
-    //             'keyword' => $keyword,
-    //             'authors' => $mst_author->join('biblio_author', 'biblio_author.author_id = mst_author.author_id')->join('biblio', 'biblio_author.biblio_id = biblio.biblio_id')->find()
-    //         ];
-    //         return view('opac/search', $data);
-    //     }
-    // }
-
     public function proses() {
 
         $title = trim(strip_tags(urldecode($_POST['title'])));

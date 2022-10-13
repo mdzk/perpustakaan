@@ -48,12 +48,24 @@
                                         <a class="nav-link" href="#kontak">Hubungi kami</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?= route_to('opac'); ?>">OPAC</a>
+                                        <a class="nav-link" href="">Donasi Buku</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="">Bahan Ajar</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Jurnal
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark">
+                                            <li><a class="dropdown-item" href="#">Jurnal Nasional</a></li>
+                                            <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </div>
                             <div class="modal-footer border-0 gap-3" style="padding:	2rem; padding-top: 0.75rem">
-                                <a href="http://localhost/slims/" class="btn btn-fill border-0 text-white">SLIMS</a>
+                                <a href="<?= route_to('opac'); ?>" class="btn btn-fill border-0 text-white">Cari buku</a>
                             </div>
                         </div>
                     </div>
@@ -73,12 +85,26 @@
                         <li class="nav-item <?= get_url(2, 'contact') ? 'active' : '' ?>">
                             <a class="nav-link" href="#kontak" <?= get_url(2, 'contact') ? 'style="color: #E7E7E8;"' : '' ?>>Hubungi kami</a>
                         </li>
-                        <li class="nav-item <?= get_url(2, 'opac') ? 'active' : '' ?>">
-                            <a class="nav-link" href="<?= route_to('opac'); ?>" <?= get_url(2, 'opac') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>OPAC</a>
+                        <li class="nav-item <?= get_url(2, 'donate') ? 'active' : '' ?>">
+                            <a class="nav-link" href="<?= route_to('donate'); ?>" <?= get_url(2, 'donate') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Donasi buku</a>
+                        </li>
+
+                        <li class="nav-item <?= get_url(2, 'bahan') ? 'active' : '' ?>">
+                            <a class="nav-link" href="<?= route_to('bahan'); ?>" <?= get_url(2, 'bahan') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Bahan Ajar</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Jurnal
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#">Jurnal Nasional</a></li>
+                                <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <div class="gap-3">
-                        <a href="http://localhost/slims/" class="btn btn-fill text-white border-0">SLIMS</a>
+                        <a href="<?= route_to('opac'); ?>" class="btn btn-fill text-white border-0">Cari buku</a>
                     </div>
                 </div>
             </nav>
