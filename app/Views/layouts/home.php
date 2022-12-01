@@ -94,7 +94,7 @@
                         </li>
 
                         <li class="nav-item <?= get_url(2, 'slims') ? 'active' : '' ?>">
-                            <a class="nav-link" href="<?= route_to('slims'); ?>" <?= get_url(2, 'slims') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>SLIMS</a>
+                            <a class="nav-link" href="<?= base_url(); ?>/slims" <?= get_url(2, 'slims') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>SLIMS</a>
                         </li>
                     </ul>
                     <div class="gap-3">
