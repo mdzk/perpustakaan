@@ -38,16 +38,10 @@
                                         <a class="nav-link" href="#" style="color: #E7E7E8;">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#layanan">Layanan</a>
+                                        <a class="nav-link" href="<?= base_url(); ?>/article">Artikel</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#artikel">Artikel</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#kontak">Hubungi kami</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">Donasi buku</a>
+                                        <a class="nav-link" href="<?= base_url(); ?>/donate">Donasi buku</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="">Bahan Ajar</a>
@@ -60,6 +54,9 @@
                                             <li><a class="dropdown-item" href="#">Jurnal Nasional</a></li>
                                             <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
                                         </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= base_url(); ?>/slims">SLIMS</a>
                                     </li>
                                 </ul>
                             </div>
@@ -75,14 +72,8 @@
                         <li class="nav-item <?= get_url(2, '') ? 'active' : '' ?>">
                             <a class="nav-link" href="<?= base_url(); ?>" <?= get_url(2, '') ? 'style="color: #E7E7E8;"' : '' ?>>Home</a>
                         </li>
-                        <li class="nav-item <?= get_url(2, 'services') ? 'active' : '' ?>">
-                            <a class="nav-link" href="#layanan" <?= get_url(2, 'services') ? 'style="color: #E7E7E8;"' : '' ?>>Layanan</a>
-                        </li>
                         <li class="nav-item <?= get_url(2, 'article') ? 'active' : '' ?>">
                             <a class="nav-link" href="<?= route_to('home-article'); ?>" <?= get_url(2, 'article') ? 'style="color: #E7E7E8;"' : '' ?>>Artikel</a>
-                        </li>
-                        <li class="nav-item <?= get_url(2, 'contact') ? 'active' : '' ?>">
-                            <a class="nav-link" href="#kontak" <?= get_url(2, 'contact') ? 'style="color: #E7E7E8;"' : '' ?>>Hubungi kami</a>
                         </li>
                         <li class="nav-item <?= get_url(2, 'donate') ? 'active' : '' ?>">
                             <a class="nav-link" href="<?= route_to('donate'); ?>" <?= get_url(2, 'donate') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Donasi buku</a>
@@ -100,6 +91,10 @@
                                 <li><a class="dropdown-item" href="#">Jurnal Nasional</a></li>
                                 <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
                             </ul>
+                        </li>
+
+                        <li class="nav-item <?= get_url(2, 'slims') ? 'active' : '' ?>">
+                            <a class="nav-link" href="<?= route_to('slims'); ?>" <?= get_url(2, 'slims') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>SLIMS</a>
                         </li>
                     </ul>
                     <div class="gap-3">
