@@ -35,7 +35,7 @@
                     <div class="icon">
                         <img src="<?= base_url(); ?>/assets/images/Content-2-8.png" alt="" />
                     </div>
-                    <h3 class="icon-title text-white">Buku Terdaftar</h3>
+                    <h3 class="icon-title text-white">Buku Popular</h3>
                     <p class="icon-caption">
                         Tersedia buku-buku<br />
                         best seller untuk kamu baca.
