@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 01 Des 2022 pada 08.32
+-- Waktu pembuatan: 12 Des 2022 pada 16.44
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -70,6 +70,48 @@ INSERT INTO `categories` (`id_categories`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `donate`
+--
+
+CREATE TABLE `donate` (
+  `id_donate` int(11) NOT NULL,
+  `donors` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `id_users` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `donate`
+--
+
+INSERT INTO `donate` (`id_donate`, `donors`, `title`, `author`, `id_users`) VALUES
+(1, 'Rival Ramli Mursat', 'Laskar Pelangi', 'Andrea Hirata', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `teaching_materials`
+--
+
+CREATE TABLE `teaching_materials` (
+  `id_materials` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `link` text NOT NULL,
+  `description` text NOT NULL,
+  `id_users` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `teaching_materials`
+--
+
+INSERT INTO `teaching_materials` (`id_materials`, `title`, `link`, `description`, `id_users`) VALUES
+(1, 'Bahasa Inggris - Adjective oleh Refdi Akmal, S.Pd., M.Pd', 'https://www.youtube.com/watch?v=VcfvQM6lhp4', 'lorem ipsum', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -87,7 +129,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_users`, `name`, `username`, `password`, `roles`) VALUES
 (1, 'Muhammad Dzaky', 'admin', '$2y$10$brHpBxzQG/p.hvUfVX3uhuITpvLwCgMRRHi6BwwwK76LUpcbPJJdO', 'admin'),
-(4, 'Naomi', 'staff', '$2y$10$qAUFx2d69LAwmUHDGDvzdutoAgGgoH2rtuxgd57GW3thpEwBnwkEq', 'staff');
+(4, 'Marta Santra Wijaya', 'staff', '$2y$10$qAUFx2d69LAwmUHDGDvzdutoAgGgoH2rtuxgd57GW3thpEwBnwkEq', 'staff');
 
 -- --------------------------------------------------------
 
@@ -577,7 +619,24 @@ INSERT INTO `visitors` (`id_visitors`, `type`, `created_at`, `id_articles`) VALU
 (468, 2, '2022-10-13 04:00:18', 1),
 (469, 2, '2022-10-13 04:00:55', 1),
 (470, 2, '2022-10-13 04:02:24', 1),
-(471, 2, '2022-10-13 04:08:41', 1);
+(471, 2, '2022-10-13 04:08:41', 1),
+(472, 2, '2022-12-01 11:31:07', 1),
+(473, 2, '2022-12-01 11:57:38', 1),
+(474, 2, '2022-12-01 11:57:57', 1),
+(475, 2, '2022-12-01 12:11:34', 1),
+(476, 2, '2022-12-01 12:11:50', 1),
+(477, 2, '2022-12-02 08:13:29', 1),
+(478, 2, '2022-12-02 08:18:35', 1),
+(479, 2, '2022-12-02 08:48:55', 7),
+(480, 2, '2022-12-02 08:49:21', 1),
+(481, 2, '2022-12-04 15:33:56', 1),
+(482, 2, '2022-12-04 15:35:33', 1),
+(483, 2, '2022-12-04 15:40:12', 1),
+(484, 2, '2022-12-11 14:08:11', 1),
+(485, 2, '2022-12-11 14:08:13', 1),
+(486, 2, '2022-12-12 14:27:39', 1),
+(487, 2, '2022-12-12 15:29:10', 1),
+(488, 2, '2022-12-12 15:29:13', 1);
 
 --
 -- Indexes for dumped tables
@@ -596,6 +655,18 @@ ALTER TABLE `articles`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_categories`);
+
+--
+-- Indeks untuk tabel `donate`
+--
+ALTER TABLE `donate`
+  ADD PRIMARY KEY (`id_donate`);
+
+--
+-- Indeks untuk tabel `teaching_materials`
+--
+ALTER TABLE `teaching_materials`
+  ADD PRIMARY KEY (`id_materials`);
 
 --
 -- Indeks untuk tabel `users`
@@ -626,6 +697,18 @@ ALTER TABLE `categories`
   MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT untuk tabel `donate`
+--
+ALTER TABLE `donate`
+  MODIFY `id_donate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `teaching_materials`
+--
+ALTER TABLE `teaching_materials`
+  MODIFY `id_materials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
@@ -635,7 +718,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=472;
+  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=489;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
