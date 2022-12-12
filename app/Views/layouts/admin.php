@@ -74,6 +74,20 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item <?= get_url(3, 'donate') ? 'active' : '' ?>">
+                            <a href="<?= route_to('donate'); ?>" class='sidebar-link'>
+                                <i class="bi bi-grid-1x2-fill"></i>
+                                <span>Donasi Buku</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item <?= get_url(3, 'materials') ? 'active' : '' ?>">
+                            <a href="<?= route_to('materials'); ?>" class='sidebar-link'>
+                                <i class="bi bi-grid-1x2-fill"></i>
+                                <span>Bahan Ajar</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-title">Pengaturan</li>
 
                         <li class="sidebar-item <?= get_url(3, 'setting') ? 'active' : '' ?>">

@@ -42,10 +42,7 @@
                                         <a class="nav-link" href="<?= route_to('home-article'); ?>">Artikel</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?= route_to('donate'); ?>">Donasi Buku</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">Bahan Ajar</a>
+                                        <a class="nav-link" href="<?= route_to('home-materials'); ?>">Bahan Ajar</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,12 +73,8 @@
                         <li class="nav-item <?= get_url(2, 'article') ? 'active' : '' ?>">
                             <a class="nav-link" href="<?= route_to('home-article'); ?>" <?= get_url(2, 'article') ? 'style="color: #E7E7E8;"' : '' ?>>Artikel</a>
                         </li>
-                        <li class="nav-item <?= get_url(2, 'donate') ? 'active' : '' ?>">
-                            <a class="nav-link" href="<?= route_to('donate'); ?>" <?= get_url(2, 'donate') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Donasi buku</a>
-                        </li>
-
-                        <li class="nav-item <?= get_url(2, 'bahan') ? 'active' : '' ?>">
-                            <a class="nav-link" href="<?= route_to('bahan'); ?>" <?= get_url(2, 'bahan') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Bahan Ajar</a>
+                        <li class="nav-item <?= get_url(2, 'materials') ? 'active' : '' ?>">
+                            <a class="nav-link" href="<?= route_to('home-materials'); ?>" <?= get_url(2, 'materials') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Bahan Ajar</a>
                         </li>
 
                         <li class="nav-item dropdown">

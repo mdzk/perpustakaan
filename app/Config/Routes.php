@@ -38,13 +38,13 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/donate', 'Home::donate', ['as' => 'donate']);
 $routes->get('/article', 'Home::article', ['as' => 'home-article']);
 $routes->get('/article/(:segment)', 'Home::detail/$1', ['as' => 'home-article-detail']);
 $routes->get('/search/(:segment)', 'Home::search/$1', ['as' => 'home-article-search']);
 $routes->post('/proses', 'Home::proses');
 
 $routes->get('/gethosting', 'Home::hosting', ['as' => 'home-hosting']);
+$routes->get('/materials', 'Home::materials', ['as' => 'home-materials']);
 
 $routes->get('/admin', 'Admin::index', ['as' => 'home', 'filter' => 'auth']);
 $routes->get('/admin/statistic', 'Admin::statistic', ['as' => 'statistic-lab']);
@@ -72,6 +72,18 @@ $routes->get('/admin/category', 'Category::index', ['as' => 'category', 'filter'
 $routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save', 'filter' => 'auth']);
 $routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth']);
 $routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth']);
+
+// Donate Section
+$routes->get('/admin/donate', 'Donate::index', ['as' => 'donate', 'filter' => 'auth']);
+// $routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save', 'filter' => 'auth']);
+// $routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth']);
+// $routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth']);
+
+// Teaching Materials Section
+$routes->get('/admin/materials', 'TeachingMaterials::index', ['as' => 'materials', 'filter' => 'auth']);
+// $routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save', 'filter' => 'auth']);
+// $routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth']);
+// $routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth']);
 
 // Authentication Section
 $routes->get('/login', 'Auth::index', ['as' => 'login']);

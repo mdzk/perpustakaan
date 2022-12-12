@@ -78,8 +78,8 @@ class Home extends BaseController
         }
     }
 
-    public function donate()
+    public function materials()
     {
-        return view('opac/donate');
+        return view('opac/materials');
     }
 }
