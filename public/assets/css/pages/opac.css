@@ -3,6 +3,11 @@ body .abovefold {
     background: linear-gradient(180deg, #F9FAFE 0%, #FFFFFF 100%);
 }
 
+iframe {
+    width: 100% !important;
+    height: 220px !important;
+}
+
 body .abovefold .header {
     margin-top: 85px;
     margin-bottom: 115px;

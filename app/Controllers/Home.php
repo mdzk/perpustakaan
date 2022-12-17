@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ArticlesModel;
+use App\Models\TeachingMaterialsModel;
 use App\Models\VisitorsModel;
 
 class Home extends BaseController
@@ -80,6 +81,17 @@ class Home extends BaseController
 
     public function materials()
     {
-        return view('opac/materials');
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 2,
+            'id_articles' => 1
+        ]);
+
+        $material = new TeachingMaterialsModel();
+        $data = [
+            'materials' => $material->orderBy('id_materials', 'desc')->find(),
+        ];
+
+        return view('opac/materials', $data);
     }
 }

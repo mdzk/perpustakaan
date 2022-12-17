@@ -6,14 +6,14 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Donasi Buku</h3>
-                <p class="text-subtitle text-muted">Menampilkan semua buku yang dibutuhkan pada perpustakaan.</p>
+                <h3>Riwayat Donasi</h3>
+                <p class="text-subtitle text-muted">Menampilkan semua buku donasi yang telah didapatkan.</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url(); ?>/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Donasi Buku</li>
+                        <li class="breadcrumb-item active" aria-current="page">Riwayat Donasi</li>
                     </ol>
                 </nav>
             </div>
@@ -24,8 +24,11 @@
     <section class="section">
         <div class="row" id="basic-table">
             <div class="col-12 col-md-12">
-                <button class="btn btn-primary rounded-pill mb-2" data-bs-toggle="modal" data-bs-target="#tambahkategori">+ Buku baru</button>
-                <a class="btn rounded-pill mb-2" href="<?= route_to('donate-history'); ?>">Riwayat donasi</a>
+                <a class="btn btn-primary rounded-pill mb-2 btn-icon action-icon" href="<?= route_to('donate'); ?>">
+                    <span class="fonticon-wrap me-2">
+                        <i class="bi bi-chevron-left"></i>
+                    </span> Kembali
+                </a>
 
                 <div class="modal fade text-left modal-borderless" id="tambahkategori">
                     <div class="modal-dialog" role="document">
@@ -35,6 +38,10 @@
                             </div>
                             <form method="POST" action="<?= route_to('donate-save'); ?>">
                                 <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="basicInput">Nama Donatur</label>
+                                        <input type="text" name="donors" class="form-control" id="basicInput" placeholder="Masukkan Nama Donatur" @error('name') is-invalid @enderror>
+                                    </div>
                                     <div class="form-group">
                                         <label for="basicInput">Judul</label>
                                         <input type="text" name="title" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
@@ -76,28 +83,18 @@
                                             <tr>
                                                 <td class="text-bold-500"><?= $donate['title']; ?></td>
                                                 <td class="text-bold-500"><?= $donate['author']; ?></td>
-                                                <td class="text-bold-500"><span class="badge bg-light-danger mx-2">Belum terdapat donatur</span></td>
+                                                <td class="text-bold-500"><?= $donate['donors']; ?></td>
                                                 <td class="text-bold-500">
                                                     <ul class="list-inline m-0 d-flex">
                                                         <li class="list-inline-item mail-delete">
-                                                            <button type="button" class="btn btn-light-success btn-icon action-icon" data-bs-toggle="modal" data-bs-target="#verifikasikategori<?= $donate['id_donate']; ?>">
-                                                                <span class="fonticon-wrap">
-                                                                    <i class="bi bi-check-lg"></i>
-                                                                </span>
-                                                            </button>
-                                                        </li>
-                                                        <li class="list-inline-item mail-delete">
-                                                            <button type="button" class="btn btn-light-primary btn-icon action-icon" data-bs-toggle="modal" data-bs-target="#editkategori<?= $donate['id_donate']; ?>">
-                                                                <span class="fonticon-wrap">
-                                                                    <i class="bi bi-pencil-fill"></i>
-                                                                </span>
+
+                                                            <button type="button" class="btn btn-light-primary " data-bs-toggle="modal" data-bs-target="#editkategori<?= $donate['id_donate']; ?>">
+                                                                Lihat
                                                             </button>
                                                         </li>
                                                         <li class="list-inline-item mail-unread">
-                                                            <button type="button" class="btn btn-light-danger btn-icon action-icon" data-bs-toggle="modal" data-bs-target="#hapuskategori<?= $donate['id_donate']; ?>">
-                                                                <span class="fonticon-wrap d-inline">
-                                                                    <i class="bi bi-trash-fill"></i>
-                                                                </span>
+                                                            <button type="button" class="btn btn-light-danger" data-bs-toggle="modal" data-bs-target="#hapuskategori<?= $donate['id_donate']; ?>">
+                                                                Hapus
                                                             </button>
                                                         </li>
                                                     </ul>
@@ -137,67 +134,39 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- edit kategori modal -->
+                                            <!-- Detail buku modal -->
                                             <div class="modal fade text-left modal-borderless" id="editkategori<?= $donate['id_donate']; ?>">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Edit Buku</h5>
+                                                            <h5 class="modal-title">Detail Donasi Buku</h5>
                                                         </div>
 
                                                         <form action="<?= route_to('donate-update'); ?>" method="POST">
                                                             <input type="hidden" name="id_donate" value="<?= $donate['id_donate']; ?>">
                                                             <div class="modal-body">
                                                                 <div class="form-group">
+                                                                    <label for="basicInput">Nama Donatur</label>
+                                                                    <input type="text" name="donors" disabled value="<?= $donate['donors'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Donatur" @error('name') is-invalid @enderror>
+                                                                </div>
+                                                                <div class="form-group">
                                                                     <label for="basicInput">Judul</label>
-                                                                    <input type="text" name="title" value="<?= $donate['title'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" required>
+                                                                    <input type="text" name="title" disabled value="<?= $donate['title'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="basicInput">Pengarang</label>
-                                                                    <input type="text" name="author" value="<?= $donate['author'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Pengarang" required>
+                                                                    <input type="text" name="author" disabled value="<?= $donate['author'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Pengarang" @error('name') is-invalid @enderror>
                                                                 </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="basicInput">Bukti</label>
+                                                                    <img class="img-fluid" src="<?= base_url() . '/img/' . $donate['picture']; ?>" alt="">
+                                                                </div>
+
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-                                                                    <span class="d-sm-block">Batal</span>
-                                                                </button>
-                                                                <button type="submit" wire:click.prevent="update()" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                                                                    <span class="d-sm-block">Simpan</span>
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- verifikasi modal -->
-                                            <div class="modal fade text-left modal-borderless" id="verifikasikategori<?= $donate['id_donate']; ?>">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Verifikasi Donasi</h5>
-                                                        </div>
-
-                                                        <form enctype="multipart/form-data" action="<?= route_to('donate-verify'); ?>" method="POST">
-                                                            <input type="hidden" name="id_donate" value="<?= $donate['id_donate']; ?>">
-                                                            <input type="hidden" name="title" value="<?= $donate['title']; ?>">
-                                                            <input type="hidden" name="author" value="<?= $donate['author']; ?>">
-                                                            <div class="modal-body">
-                                                                <div class="form-group">
-                                                                    <label for="basicInput">Donatur</label>
-                                                                    <input type="text" name="donors" value="<?= $donate['donors'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Donatur" required>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="formFile" class="form-label">Bukti</label>
-                                                                    <input name="bukti" class="form-control" type="file" accept="image/*" id="formFile" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-                                                                    <span class="d-sm-block">Batal</span>
-                                                                </button>
-                                                                <button type="submit" wire:click.prevent="update()" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                                                                    <span class="d-sm-block">Simpan</span>
+                                                                <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">
+                                                                    <span class="d-sm-block">Tutup</span>
                                                                 </button>
                                                             </div>
                                                         </form>

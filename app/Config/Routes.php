@@ -75,15 +75,17 @@ $routes->post('/admin/category/update', 'Category::update', ['as' => 'category-u
 
 // Donate Section
 $routes->get('/admin/donate', 'Donate::index', ['as' => 'donate', 'filter' => 'auth']);
-// $routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save', 'filter' => 'auth']);
-// $routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth']);
-// $routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth']);
+$routes->get('/admin/donate/history', 'Donate::history', ['as' => 'donate-history', 'filter' => 'auth']);
+$routes->post('/admin/donate/save', 'Donate::save', ['as' => 'donate-save', 'filter' => 'auth']);
+$routes->post('/admin/donate/delete', 'Donate::delete', ['as' => 'donate-delete', 'filter' => 'auth']);
+$routes->post('/admin/donate/update', 'Donate::update', ['as' => 'donate-update', 'filter' => 'auth']);
+$routes->post('/admin/donate/verify', 'Donate::verify', ['as' => 'donate-verify', 'filter' => 'auth']);
 
 // Teaching Materials Section
 $routes->get('/admin/materials', 'TeachingMaterials::index', ['as' => 'materials', 'filter' => 'auth']);
-// $routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save', 'filter' => 'auth']);
-// $routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth']);
-// $routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth']);
+$routes->post('/admin/materials/save', 'TeachingMaterials::save', ['as' => 'materials-save', 'filter' => 'auth']);
+$routes->post('/admin/materials/delete', 'TeachingMaterials::delete', ['as' => 'materials-delete', 'filter' => 'auth']);
+$routes->post('/admin/materials/update', 'TeachingMaterials::update', ['as' => 'materials-update', 'filter' => 'auth']);
 
 // Authentication Section
 $routes->get('/login', 'Auth::index', ['as' => 'login']);

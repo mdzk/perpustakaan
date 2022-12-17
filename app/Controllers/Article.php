@@ -28,7 +28,7 @@ class Article extends BaseController
     {
         $thumbnail = $this->request->getFile('thumbnail');
         if ($thumbnail->getError() == 4) {
-            $thumbnailName = 'dafault.jpg';
+            $thumbnailName = 'default.jpg';
         } else {
             $thumbnailName = $thumbnail->getRandomName();
             $thumbnail->move('img', $thumbnailName);

@@ -10,42 +10,37 @@
         <div class="row">
             <div class="text-center col-lg-12 px-md-0 my-auto position-relative">
                 <div class="headline">
-                📚 Mari belajar bersama!<span class="cl-light-blue"><br></span>
+                    📚 Mari belajar bersama!<span class="cl-light-blue"><br></span>
                     <div class="sub-headline w-auto">
                         Kamu bisa akses bahan ajar disini.
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-3 mt-5">
-                <div class="card w-auto p-0">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/VcfvQM6lhp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <h3 class="fs-5">Bahasa Inggris - Adjective oleh Refdi Akmal, S.Pd., M.Pd</h3>
-            </div>
 
-            <div class="col-lg-3 col-md-3 mt-5">
-                <div class="card w-auto p-0">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/mOJ9HmuGBxs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <h3 class="fs-5">Agribisnis - Ilmu Usaha Tani oleh Dayang Berliana, S.P., M.Si</h3>
-            </div>
+            <?php foreach ($materials as $material) : ?>
 
-            <div class="col-lg-3 col-md-3 mt-5">
-                <div class="card w-auto p-0">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/C-twZZtBD1I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="col-md-3 mt-5">
+                    <div class="card w-auto p-0">
+                        <?php if ($material['status'] == 1) { ?>
+                            <div style="width:;">
+                                <?= $material['material']; ?>
+                            </div>
+                        <?php } else if ($material['status'] == 2) { ?>
+                            <img src="<?= base_url(); ?>/img/pdf.png" alt="">
+                        <?php } ?>
+                    </div>
+                    <?php if ($material['status'] == 1) { ?>
+                        <h3 class="fs-5"><?= $material['title']; ?></h3>
+                    <?php } else if ($material['status'] == 2) { ?>
+                        <h3 class="fs-5"><a target=”_blank” href="<?= base_url(); ?>/pdf/<?= $material['material']; ?>"><?= $material['title']; ?></a></h3>
+                    <?php } ?>
                 </div>
-                <h3 class="fs-5">Agribisnis - Manajemen Pemasaran oleh Fitriani, S.P., M.E.P</h3>
-            </div>
 
-            <div class="col-lg-3 col-md-3 mt-5">
-                <div class="card w-auto p-0">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/VcfvQM6lhp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <h3 class="fs-5">Bahasa Inggris - Adjective oleh Refdi Akmal, S.Pd., M.Pd</h3>
-            </div>
+            <?php endforeach; ?>
+
         </div>
     </div>
 </section>

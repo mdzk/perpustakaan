@@ -82,8 +82,8 @@
                                 Jurnal
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">Jurnal Nasional</a></li>
-                                <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
+                            <li><a class="dropdown-item" href="https://sinta.kemdikbud.go.id/journals">Jurnal Nasional</a></li>
+                                            <li><a class="dropdown-item" href="https://www.researchgate.net/">Jurnal Internasional</a></li>
                             </ul>
                         </li>
 

@@ -7,7 +7,7 @@
             <div class="mx-auto d-flex flex-lg-row flex-column hero">
                 <!-- Left Column -->
                 <div class="left-column d-flex flex-lg-grow-1 flex-column align-items-lg-start text-lg-start align-items-center text-center">
-                    <h1 class="title-text-big">Selamat datang<br class=" d-lg-block d-none"> di Perpustakaan Jurusan</h1>
+                    <h1 class="title-text-big">Selamat datang<br class=" d-lg-block d-none"> di Perpustakaan Jurusan Ekonomi dan Bisnis</h1>
                     <p class="fs-4">Nikmati layanan dari kami untuk mendukung pembelajaran kamu! 😎</p>
                 </div>
                 <!-- Right Column -->

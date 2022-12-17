@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/main/app.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/pages/home.css">
     <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>/assets/images/logo/favicon.png">
-
 </head>
 
 <body>
@@ -41,9 +40,6 @@
                                         <a class="nav-link" href="<?= base_url(); ?>/article">Artikel</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?= base_url(); ?>/donate">Donasi buku</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" href="">Bahan Ajar</a>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -51,8 +47,8 @@
                                             Jurnal
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-dark">
-                                            <li><a class="dropdown-item" href="#">Jurnal Nasional</a></li>
-                                            <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
+                                            <li><a class="dropdown-item" href="https://sinta.kemdikbud.go.id/journals">Jurnal Nasional</a></li>
+                                            <li><a class="dropdown-item" href="https://www.researchgate.net/">Jurnal Internasional</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -69,18 +65,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo">
                     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                        <li class="nav-item <?= get_url(2, '') ? 'active' : '' ?>">
+                    <li class="nav-item <?= get_url(2, '') ? 'active' : '' ?>">
                             <a class="nav-link" href="<?= base_url(); ?>" <?= get_url(2, '') ? 'style="color: #E7E7E8;"' : '' ?>>Home</a>
                         </li>
                         <li class="nav-item <?= get_url(2, 'article') ? 'active' : '' ?>">
                             <a class="nav-link" href="<?= route_to('home-article'); ?>" <?= get_url(2, 'article') ? 'style="color: #E7E7E8;"' : '' ?>>Artikel</a>
                         </li>
-                        <li class="nav-item <?= get_url(2, 'donate') ? 'active' : '' ?>">
-                            <a class="nav-link" href="<?= route_to('donate'); ?>" <?= get_url(2, 'donate') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Donasi buku</a>
-                        </li>
-
-                        <li class="nav-item <?= get_url(2, 'bahan') ? 'active' : '' ?>">
-                            <a class="nav-link" href="<?= route_to('bahan'); ?>" <?= get_url(2, 'bahan') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Bahan Ajar</a>
+                        <li class="nav-item <?= get_url(2, 'materials') ? 'active' : '' ?>">
+                            <a class="nav-link" href="<?= route_to('home-materials'); ?>" <?= get_url(2, 'materials') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Bahan Ajar</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -88,8 +80,8 @@
                                 Jurnal
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">Jurnal Nasional</a></li>
-                                <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
+                                <li><a class="dropdown-item" href="https://sinta.kemdikbud.go.id/journals">Jurnal Nasional</a></li>
+                                <li><a class="dropdown-item" href="https://www.researchgate.net/">Jurnal Internasional</a></li>
                             </ul>
                         </li>
 
