@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 12 Des 2022 pada 16.44
+-- Waktu pembuatan: 17 Des 2022 pada 23.23
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -45,7 +45,7 @@ CREATE TABLE `articles` (
 INSERT INTO `articles` (`id_articles`, `title`, `description`, `thumbnail`, `date`, `slug`, `id_categories`, `id_users`) VALUES
 (6, 'Competitive Fund Vokasi 2022', '<p>lorem</p>', '1665633574_d93e1e7182cdbed6bdd7.png', '2022-10-12', 'competitive-fund-vokasi-2022', 1, 1),
 (7, 'Kunjungan Industri', '<p>lorem</p>', '1665633650_3ec9649349628013adf3.png', '2022-10-12', 'kunjungan-industri', 1, 1),
-(8, 'Program Studi Pengelolaan Agribisnis Gandeng “SayurBox” Kelola Teacing Factory Agrotechnopark', '<p>lorem</p>', '1665633736_8dc54dfe34447771d8c6.jpg', '2022-10-12', 'program-studi-pengelolaan-agribisnis-gandeng-sayurbox-kelola-teacing-factory-agrotechnopark', 4, 1);
+(10, 'mlml', '<p>ml</p>', 'default.jpg', '2022-12-17', 'mlml', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -75,9 +75,11 @@ INSERT INTO `categories` (`id_categories`, `name`) VALUES
 
 CREATE TABLE `donate` (
   `id_donate` int(11) NOT NULL,
-  `donors` varchar(255) NOT NULL,
+  `donors` varchar(255) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `picture` varchar(255) DEFAULT NULL,
   `id_users` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -85,8 +87,8 @@ CREATE TABLE `donate` (
 -- Dumping data untuk tabel `donate`
 --
 
-INSERT INTO `donate` (`id_donate`, `donors`, `title`, `author`, `id_users`) VALUES
-(1, 'Rival Ramli Mursat', 'Laskar Pelangi', 'Andrea Hirata', 1);
+INSERT INTO `donate` (`id_donate`, `donors`, `title`, `author`, `status`, `picture`, `id_users`) VALUES
+(15, NULL, 'Laskar Pelangi', 'Andrea Hirata', 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -97,8 +99,9 @@ INSERT INTO `donate` (`id_donate`, `donors`, `title`, `author`, `id_users`) VALU
 CREATE TABLE `teaching_materials` (
   `id_materials` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `link` text NOT NULL,
+  `material` text NOT NULL,
   `description` text NOT NULL,
+  `status` int(11) NOT NULL,
   `id_users` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -106,8 +109,9 @@ CREATE TABLE `teaching_materials` (
 -- Dumping data untuk tabel `teaching_materials`
 --
 
-INSERT INTO `teaching_materials` (`id_materials`, `title`, `link`, `description`, `id_users`) VALUES
-(1, 'Bahasa Inggris - Adjective oleh Refdi Akmal, S.Pd., M.Pd', 'https://www.youtube.com/watch?v=VcfvQM6lhp4', 'lorem ipsum', 1);
+INSERT INTO `teaching_materials` (`id_materials`, `title`, `material`, `description`, `status`, `id_users`) VALUES
+(10, 'Agribisnis - Manajemen Pemasaran oleh Fitriani, S.P., M.E.P', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/C-twZZtBD1I\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '-', 1, 0),
+(11, 'pdf edit', '1671310117_2362c56c60f315e69f85.pdf', 'pdf des edited', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -129,7 +133,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_users`, `name`, `username`, `password`, `roles`) VALUES
 (1, 'Muhammad Dzaky', 'admin', '$2y$10$brHpBxzQG/p.hvUfVX3uhuITpvLwCgMRRHi6BwwwK76LUpcbPJJdO', 'admin'),
-(4, 'Marta Santra Wijaya', 'staff', '$2y$10$qAUFx2d69LAwmUHDGDvzdutoAgGgoH2rtuxgd57GW3thpEwBnwkEq', 'staff');
+(4, 'Marta Santra Wijaya', 'staff', '$2y$10$LfyWnXERGYNhqUKOI1qftO.66XpsNU99EpLJLarZb/RWlFyeKQkom', 'staff');
 
 -- --------------------------------------------------------
 
@@ -636,7 +640,63 @@ INSERT INTO `visitors` (`id_visitors`, `type`, `created_at`, `id_articles`) VALU
 (485, 2, '2022-12-11 14:08:13', 1),
 (486, 2, '2022-12-12 14:27:39', 1),
 (487, 2, '2022-12-12 15:29:10', 1),
-(488, 2, '2022-12-12 15:29:13', 1);
+(488, 2, '2022-12-12 15:29:13', 1),
+(489, 2, '2022-12-15 07:47:23', 1),
+(490, 2, '2022-12-15 07:47:38', 1),
+(491, 2, '2022-12-15 07:47:39', 1),
+(492, 2, '2022-12-15 07:48:32', 6),
+(493, 2, '2022-12-15 07:48:42', 6),
+(494, 2, '2022-12-15 07:48:45', 6),
+(495, 2, '2022-12-15 07:48:47', 6),
+(496, 2, '2022-12-15 07:48:53', 6),
+(497, 2, '2022-12-15 07:48:55', 1),
+(498, 2, '2022-12-15 07:49:00', 1),
+(499, 2, '2022-12-15 07:49:02', 1),
+(500, 2, '2022-12-15 07:49:12', 1),
+(501, 2, '2022-12-15 07:55:24', 1),
+(502, 2, '2022-12-15 07:55:29', 1),
+(503, 2, '2022-12-15 07:55:38', 1),
+(504, 2, '2022-12-15 08:00:00', 1),
+(505, 2, '2022-12-15 08:00:00', 1),
+(506, 2, '2022-12-15 08:00:26', 1),
+(507, 2, '2022-12-17 17:30:41', 1),
+(508, 2, '2022-12-17 17:31:23', 1),
+(509, 2, '2022-12-17 17:31:32', 7),
+(510, 2, '2022-12-17 20:49:19', 1),
+(511, 2, '2022-12-17 20:49:19', 1),
+(512, 2, '2022-12-17 20:49:27', 1),
+(513, 2, '2022-12-17 21:21:16', 1),
+(514, 2, '2022-12-17 21:21:46', 1),
+(515, 2, '2022-12-17 21:23:41', 1),
+(516, 2, '2022-12-17 21:23:54', 1),
+(517, 2, '2022-12-17 21:24:22', 1),
+(518, 2, '2022-12-17 21:25:47', 1),
+(519, 2, '2022-12-17 21:26:32', 1),
+(520, 2, '2022-12-17 21:26:41', 1),
+(521, 2, '2022-12-17 21:29:30', 1),
+(522, 2, '2022-12-17 21:30:36', 1),
+(523, 2, '2022-12-17 21:30:54', 1),
+(524, 2, '2022-12-17 21:31:48', 1),
+(525, 2, '2022-12-17 21:32:44', 1),
+(526, 2, '2022-12-17 21:32:52', 1),
+(527, 2, '2022-12-17 21:32:59', 1),
+(528, 2, '2022-12-17 21:33:06', 1),
+(529, 2, '2022-12-17 21:33:11', 1),
+(530, 2, '2022-12-17 21:33:17', 1),
+(531, 2, '2022-12-17 21:33:24', 1),
+(532, 2, '2022-12-17 21:33:31', 1),
+(533, 2, '2022-12-17 21:34:14', 1),
+(534, 2, '2022-12-17 21:34:26', 1),
+(535, 2, '2022-12-17 21:34:31', 1),
+(536, 2, '2022-12-17 21:34:58', 1),
+(537, 2, '2022-12-17 21:35:19', 1),
+(538, 2, '2022-12-17 21:35:34', 1),
+(539, 2, '2022-12-17 21:35:46', 1),
+(540, 2, '2022-12-17 21:36:00', 1),
+(541, 2, '2022-12-17 21:36:15', 1),
+(542, 2, '2022-12-17 21:36:24', 1),
+(543, 2, '2022-12-17 21:36:29', 1),
+(544, 2, '2022-12-17 21:36:42', 1);
 
 --
 -- Indexes for dumped tables
@@ -688,25 +748,25 @@ ALTER TABLE `visitors`
 -- AUTO_INCREMENT untuk tabel `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id_articles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_articles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `donate`
 --
 ALTER TABLE `donate`
-  MODIFY `id_donate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_donate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `teaching_materials`
 --
 ALTER TABLE `teaching_materials`
-  MODIFY `id_materials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_materials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -718,7 +778,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=489;
+  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=545;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
