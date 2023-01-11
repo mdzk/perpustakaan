@@ -47,6 +47,13 @@
                                 <input type="text" name="material" class="form-control" id="basicInput" placeholder="Masukkan Nama Pengarang" required>
                             </div>
                             <div class="form-group">
+                                <select name='id_prodi' class="form-select" id="basicSelect">
+                                    <?php foreach ($prodies as $prodi) : ?>
+                                        <option value="<?= $prodi['id_prodi']; ?>"><?= $prodi['name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="floatingTextarea2">Deskripsi</label>
                                 <textarea class="form-control" name="description" placeholder="Masukkan Deskripsi" id="floatingTextarea2" style="height: 100px" required></textarea>
                             </div>
@@ -81,6 +88,15 @@
                                 <label for="formFile" class="form-label">Upload PDF</label>
                                 <input name="filePDF" class="form-control" type="file" accept="application/pdf" id="formFile" required>
                             </div>
+
+                            <div class="form-group">
+                                <select name='id_prodi' class="form-select" id="basicSelect">
+                                    <?php foreach ($prodies as $prodi) : ?>
+                                        <option value="<?= $prodi['id_prodi']; ?>"><?= $prodi['name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="floatingTextarea2">Deskripsi</label>
                                 <textarea class="form-control" name="description" placeholder="Masukkan Deskripsi" id="floatingTextarea2" style="height: 100px" required></textarea>
@@ -156,7 +172,17 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="basicInput">YouTube Embed</label>
-                                                            <input type="text" name="material" value="<?= $material['material']; ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Pengarang" required>
+                                                            <textarea type="text" name="material" class="form-control" id="basicInput" placeholder="Masukkan Nama Pengarang" required><?= $material['material']; ?></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="formFile" class="form-label">Program Studi</label>
+                                                            <select name='id_prodi' class="form-select" id="basicSelect">
+                                                                <?php foreach ($prodies as $prodi) : ?>
+                                                                    <option value="<?= $prodi['id_prodi']; ?>" <?php if ($prodi['id_prodi'] == $material['id_prodi']) {
+                                                                                                                    echo 'selected';
+                                                                                                                } ?>><?= $prodi['name']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="floatingTextarea2">Deskripsi</label>
@@ -181,12 +207,12 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Tambah Bahan Ajar PDF</h5>
+                                                    <h5 class="modal-title">Edit Bahan Ajar PDF</h5>
                                                 </div>
                                                 <form enctype="multipart/form-data" method="POST" action="<?= route_to('materials-update'); ?>">
                                                     <input type="text" name="status" value="2" hidden>
                                                     <div class="modal-body">
-                                                    <input type="text" name="id_materials" hidden value="<?= $material['id_materials']; ?>">
+                                                        <input type="text" name="id_materials" hidden value="<?= $material['id_materials']; ?>">
                                                         <div class="form-group">
                                                             <label for="basicInput">Judul</label>
                                                             <input type="text" name="title" value="<?= $material['title']; ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" required>
@@ -195,6 +221,18 @@
                                                             <label for="formFile" class="form-label">Upload PDF</label>
                                                             <input name="filePDF" class="form-control" type="file" accept="application/pdf" id="formFile">
                                                         </div>
+
+                                                        <div class="form-group">
+                                                            <label for="formFile" class="form-label">Program Studi</label>
+                                                            <select name='id_prodi' class="form-select" id="basicSelect">
+                                                                <?php foreach ($prodies as $prodi) : ?>
+                                                                    <option value="<?= $prodi['id_prodi']; ?>" <?php if ($prodi['id_prodi'] == $material['id_prodi']) {
+                                                                                                                    echo 'selected';
+                                                                                                                } ?>><?= $prodi['name']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>
+
                                                         <div class="form-group">
                                                             <label for="floatingTextarea2">Deskripsi</label>
                                                             <textarea class="form-control" name="description" placeholder="Masukkan Deskripsi" id="floatingTextarea2" style="height: 100px" required><?= $material['description']; ?></textarea>

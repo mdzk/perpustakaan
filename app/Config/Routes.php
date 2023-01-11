@@ -48,6 +48,11 @@ $routes->get('/materials', 'Home::materials', ['as' => 'home-materials']);
 $routes->get('/materials/videos', 'Home::materialsVideos');
 $routes->get('/materials/documents', 'Home::materialsDocuments');
 
+$routes->get('/donate', 'Home::donate', ['as' => 'home-donate']);
+$routes->post('/donate/update', 'Home::donateUpdate', ['as' => 'home-donate-update']);
+$routes->post('/donate/add', 'Home::donateAdd', ['as' => 'home-donate-add']);
+
+
 $routes->get('/admin', 'Admin::index', ['as' => 'home', 'filter' => 'auth']);
 $routes->get('/admin/statistic', 'Admin::statistic', ['as' => 'statistic-lab']);
 
@@ -75,9 +80,17 @@ $routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save'
 $routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth:staff']);
 $routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth:staff']);
 
+// Prodi Section
+$routes->get('/admin/prodi', 'Prodi::index', ['as' => 'prodi', 'filter' => 'auth:staff']);
+$routes->post('/admin/prodi/save', 'Prodi::save', ['as' => 'prodi-save', 'filter' => 'auth:staff']);
+$routes->post('/admin/prodi/delete', 'Prodi::delete', ['as' => 'prodi-delete', 'filter' => 'auth:staff']);
+$routes->post('/admin/prodi/update', 'Prodi::update', ['as' => 'prodi-update', 'filter' => 'auth:staff']);
+
 // Donate Section
 $routes->get('/admin/donate', 'Donate::index', ['as' => 'donate', 'filter' => 'auth:staff']);
 $routes->get('/admin/donate/history', 'Donate::history', ['as' => 'donate-history', 'filter' => 'auth:staff']);
+$routes->get('/admin/donate/title', 'Donate::title', ['as' => 'donate-title', 'filter' => 'auth:staff']);
+$routes->post('/admin/donate/title', 'Donate::titleVerify', ['as' => 'donate-title-verify', 'filter' => 'auth:staff']);
 $routes->post('/admin/donate/save', 'Donate::save', ['as' => 'donate-save', 'filter' => 'auth:staff']);
 $routes->post('/admin/donate/delete', 'Donate::delete', ['as' => 'donate-delete', 'filter' => 'auth:staff']);
 $routes->post('/admin/donate/update', 'Donate::update', ['as' => 'donate-update', 'filter' => 'auth:staff']);

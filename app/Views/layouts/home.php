@@ -51,6 +51,11 @@
                                             <li><a class="dropdown-item" href="https://www.researchgate.net/">Jurnal Internasional</a></li>
                                         </ul>
                                     </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= base_url(); ?>/donate">Donasi Buku</a>
+                                    </li>
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= base_url(); ?>/slims">SLIMS</a>
                                     </li>
@@ -85,9 +90,14 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item <?= get_url(2, 'donate') ? 'active' : '' ?>">
+                            <a class="nav-link" href="<?= base_url(); ?>/donate" <?= get_url(2, 'donate') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Donasi Buku</a>
+                        </li>
+
                         <li class="nav-item <?= get_url(2, 'slims') ? 'active' : '' ?>">
                             <a class="nav-link" href="<?= base_url(); ?>/slims" <?= get_url(2, 'slims') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>SLIMS</a>
                         </li>
+
                     </ul>
                     <div class="gap-3">
                         <a href="<?= route_to('opac'); ?>" class="btn btn-fill text-white border-0">Cari buku</a>

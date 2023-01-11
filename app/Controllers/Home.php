@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ArticlesModel;
+use App\Models\DonateModel;
 use App\Models\TeachingMaterialsModel;
 use App\Models\VisitorsModel;
 
@@ -50,9 +51,41 @@ class Home extends BaseController
         return view('article-detail', $data);
     }
 
-    public function hosting()
+    public function donate()
     {
-        return view('hosting');
+
+        $donate = new DonateModel();
+        $data = [
+            'donates' => $donate->where(['status'=> 0, 'donors' => NULL])->findAll(),
+        ];
+        return view('opac/donate', $data);
+    }
+
+    public function donateUpdate()
+    {
+        $donate  = new DonateModel();
+
+        $data = [
+            'donors' => $this->request->getPost('donors'),
+            'npm' => $this->request->getPost('npm'),
+        ];
+
+        $donate->update($this->request->getPost('id-form') ,$data);
+        return redirect()->to('donate');
+    }
+
+    public function donateAdd()
+    {
+        $donate  = new DonateModel();
+
+        $data = [
+            'title' => $this->request->getPost('title-add'),
+            'author' => $this->request->getPost('author-add'),
+            'status' => 2,
+        ];
+
+        $donate->save($data);
+        return redirect()->to('donate');
     }
 
     public function proses()
@@ -93,7 +126,7 @@ class Home extends BaseController
             'materials' => $material->where('status', 1)->orderBy('id_materials', 'desc')->find(),
         ];
 
-        return view('opac/materials', $data);       
+        return view('opac/materials', $data);
     }
     public function materialsDocuments()
     {
@@ -109,7 +142,7 @@ class Home extends BaseController
             'materials' => $material->where('status', 2)->orderBy('id_materials', 'desc')->find(),
         ];
 
-        return view('opac/materials', $data);       
+        return view('opac/materials', $data);
     }
     public function materials()
     {
@@ -126,6 +159,5 @@ class Home extends BaseController
         ];
 
         return view('opac/materials', $data);
-        
     }
 }

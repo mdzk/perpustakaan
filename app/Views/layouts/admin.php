@@ -50,44 +50,51 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                    <?php if ($_SESSION['roles'] == 'staff') : ?>
-                        <li class="sidebar-title">Menu</li>
+                        <?php if ($_SESSION['roles'] == 'staff') : ?>
+                            <li class="sidebar-title">Menu</li>
 
-                        <?php route_to('home') ?>
-                        <li class="sidebar-item <?= get_url(3, '') ? 'active' : '' ?>">
-                            <a href="<?= route_to('home'); ?>" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
+                            <?php route_to('home') ?>
+                            <li class="sidebar-item <?= get_url(3, '') ? 'active' : '' ?>">
+                                <a href="<?= route_to('home'); ?>" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item <?= get_url(3, 'article') ? 'active' : '' ?>">
-                            <a href="<?= route_to('article'); ?>" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Artikel</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item <?= get_url(3, 'article') ? 'active' : '' ?>">
+                                <a href="<?= route_to('article'); ?>" class='sidebar-link'>
+                                    <i class="bi bi-file-earmark-medical-fill"></i>
+                                    <span>Artikel</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item <?= get_url(3, 'category') ? 'active' : '' ?>">
-                            <a href="<?= route_to('category'); ?>" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Kategori</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item <?= get_url(3, 'category') ? 'active' : '' ?>">
+                                <a href="<?= route_to('category'); ?>" class='sidebar-link'>
+                                    <i class="bi bi-grid-1x2-fill"></i>
+                                    <span>Kategori</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item <?= get_url(3, 'donate') ? 'active' : '' ?>">
-                            <a href="<?= route_to('donate'); ?>" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Donasi Buku</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item <?= get_url(3, 'donate') ? 'active' : '' ?>">
+                                <a href="<?= route_to('donate'); ?>" class='sidebar-link'>
+                                    <i class="bi bi-grid-1x2-fill"></i>
+                                    <span>Donasi Buku</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item <?= get_url(3, 'materials') ? 'active' : '' ?>">
-                            <a href="<?= route_to('materials'); ?>" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Bahan Ajar</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item <?= get_url(3, 'materials') ? 'active' : '' ?>">
+                                <a href="<?= route_to('materials'); ?>" class='sidebar-link'>
+                                    <i class="bi bi-grid-1x2-fill"></i>
+                                    <span>Bahan Ajar</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item <?= get_url(3, 'prodi') ? 'active' : '' ?>">
+                                <a href="<?= route_to('prodi'); ?>" class='sidebar-link'>
+                                    <i class="bi bi-grid-1x2-fill"></i>
+                                    <span>Program Studi</span>
+                                </a>
+                            </li>
                         <?php endif; ?>
                         <li class="sidebar-title">Pengaturan</li>
 

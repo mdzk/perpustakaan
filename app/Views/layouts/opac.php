@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/main/app.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/pages/home.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/pages/opac.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>/assets/images/logo/favicon.png">
 
 </head>
@@ -44,6 +47,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= route_to('home-materials'); ?>">Bahan Ajar</a>
                                     </li>
+                                    
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Jurnal
@@ -53,6 +57,11 @@
                                             <li><a class="dropdown-item" href="#">Jurnal Internasional</a></li>
                                         </ul>
                                     </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= route_to('home-donate'); ?>">Donasi Buku</a>
+                                    </li>
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?= base_url(); ?>/slims">SLIMS</a>
                                     </li>
@@ -82,9 +91,13 @@
                                 Jurnal
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="https://sinta.kemdikbud.go.id/journals">Jurnal Nasional</a></li>
-                                            <li><a class="dropdown-item" href="https://www.researchgate.net/">Jurnal Internasional</a></li>
+                                <li><a class="dropdown-item" href="https://sinta.kemdikbud.go.id/journals">Jurnal Nasional</a></li>
+                                <li><a class="dropdown-item" href="https://www.researchgate.net/">Jurnal Internasional</a></li>
                             </ul>
+                        </li>
+
+                        <li class="nav-item <?= get_url(2, 'donate') ? 'active' : '' ?>">
+                            <a class="nav-link" href="<?= base_url(); ?>/donate" <?= get_url(2, 'donate') ? 'style="color: #524eee; font-weight:bold;"' : '' ?>>Donasi Buku</a>
                         </li>
 
                         <li class="nav-item <?= get_url(2, 'slims') ? 'active' : '' ?>">
@@ -221,6 +234,27 @@
 
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+
+        function showModalEdit(e){
+            var title = $(e).parents('tr').find('.title-donate').text();
+            var author = $(e).parents('tr').find('.author-donate').text();
+            var id = $(e).parents('tr').data('id');
+
+            $('#exampleModal').find('form #title-form').val(title);
+            $('#exampleModal').find('form #author-form').val(author);
+
+            var input = $('#exampleModal').find('form #id-form').attr("value", id);
+            $('#exampleModal').find('form #id-form').html(input);
+        }
+    </script>
+
 </body>
 
 </html>

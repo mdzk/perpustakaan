@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ProdiModel;
 use App\Models\TeachingMaterialsModel;
 
 class TeachingMaterials extends BaseController
@@ -9,8 +10,10 @@ class TeachingMaterials extends BaseController
     public function index()
     {
         $materials = new TeachingMaterialsModel();
+        $prodi = new ProdiModel();
         $data = [
             'materials' => $materials->findAll(),
+            'prodies' => $prodi->findAll(),
         ];
         echo view('admin/materials', $data);
     }
@@ -38,6 +41,7 @@ class TeachingMaterials extends BaseController
                 'material' => $thumbnailName,
                 'description' => $this->request->getPost('description'),
                 'status' => $this->request->getPost('status'),
+                'id_prodi' => $this->request->getVar('id_prodi'),
                 'id_users' => session()->get('id_users'),
             ]);
         } else if ($status == 1) {
@@ -47,6 +51,7 @@ class TeachingMaterials extends BaseController
                 'material' => $this->request->getPost('material'),
                 'description' => $this->request->getPost('description'),
                 'status' => $this->request->getPost('status'),
+                'id_prodi' => $this->request->getVar('id_prodi'),
                 'id_users' => session()->get('id_users'),
             ]);
         }
@@ -105,6 +110,7 @@ class TeachingMaterials extends BaseController
                 'title' => $this->request->getPost('title'),
                 'material' =>  $thumbnailName,
                 'description' => $this->request->getPost('description'),
+                'id_prodi' => $this->request->getVar('id_prodi'),
                 'status' => $this->request->getPost('status'),
             ]);
 
@@ -116,6 +122,7 @@ class TeachingMaterials extends BaseController
                 'title' => $this->request->getPost('title'),
                 'material' => $this->request->getPost('material'),
                 'description' => $this->request->getPost('description'),
+                'id_prodi' => $this->request->getVar('id_prodi'),
                 'status' => $this->request->getPost('status'),
             ]);
             session()->setFlashdata('pesan', 'Bahan ajar berhasil diedit');

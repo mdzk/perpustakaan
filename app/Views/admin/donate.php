@@ -25,6 +25,7 @@
         <div class="row" id="basic-table">
             <div class="col-12 col-md-12">
                 <button class="btn btn-primary rounded-pill mb-2" data-bs-toggle="modal" data-bs-target="#tambahkategori">+ Buku baru</button>
+                <a class="btn rounded-pill mb-2" href="<?= route_to('donate-title'); ?>">Verifikasi Judul</a>
                 <a class="btn rounded-pill mb-2" href="<?= route_to('donate-history'); ?>">Riwayat donasi</a>
 
                 <div class="modal fade text-left modal-borderless" id="tambahkategori">
@@ -76,7 +77,13 @@
                                             <tr>
                                                 <td class="text-bold-500"><?= $donate['title']; ?></td>
                                                 <td class="text-bold-500"><?= $donate['author']; ?></td>
-                                                <td class="text-bold-500"><span class="badge bg-light-danger mx-2">Belum terdapat donatur</span></td>
+                                                <td class="text-bold-500">
+                                                    <?php if ($donate['donors'] == '') { ?>
+                                                        <span class="badge bg-light-danger mx-2">Belum terdapat donatur</span>
+                                                        <?php } else {; ?>
+                                                            <span class="badge bg-light-primary mx-2"><?= $donate['donors']; ?></span>
+                                                    <?php }; ?>
+                                                </td>
                                                 <td class="text-bold-500">
                                                     <ul class="list-inline m-0 d-flex">
                                                         <li class="list-inline-item mail-delete">
@@ -185,7 +192,12 @@
                                                             <div class="modal-body">
                                                                 <div class="form-group">
                                                                     <label for="basicInput">Donatur</label>
-                                                                    <input type="text" name="donors" value="<?= $donate['donors'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Donatur" required>
+                                                                    <input type="text" name="donors" class="form-control" value="<?= $donate['donors']; ?>" id="basicInput" placeholder="Masukkan Nama Donatur" required>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="basicInput">NPM</label>
+                                                                    <input type="text" name="npm" class="form-control" id="basicInput" value="<?= $donate['npm']; ?>" placeholder="Masukkan Nama Donatur" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="formFile" class="form-label">Bukti</label>

@@ -31,7 +31,7 @@
                 <div class="col-md-3 mt-5">
                     <div class="card w-auto p-0">
                         <?php if ($material['status'] == 1) { ?>
-                            <div style="width:;">
+                            <div>
                                 <?= $material['material']; ?>
                             </div>
                         <?php } else if ($material['status'] == 2) { ?>

@@ -44,7 +44,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
                         <div class="card-content">
-                            <img class="card-img-top img-fluid" style="object-fit: cover;" src="http://localhost/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
+                            <img class="card-img-top img-fluid" style="object-fit: cover;" src="<?= base_url(); ?>/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
                             <div class="card-body">
                                 <p class="fs-6 text mb-3"><a href=""><?= $biblio['title']; ?></a></p>
                             </div>

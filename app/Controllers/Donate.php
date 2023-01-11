@@ -48,6 +48,7 @@ class Donate extends BaseController
         $donate->replace([
             'id_donate' => $this->request->getPost('id_donate'),
             'donors' => $this->request->getPost('donors'),
+            'npm' => $this->request->getPost('npm'),
             'title' => $this->request->getPost('title'),
             'author' => $this->request->getPost('author'),
         ]);
@@ -61,6 +62,27 @@ class Donate extends BaseController
             'donates' => $donate->where('status', 1)->find(),
         ];
         echo view('admin/donate-history', $data);
+    }
+
+    public function title()
+    {
+        $donate = new DonateModel();
+        $data = [
+            'donates' => $donate->where('status', 2)->find(),
+        ];
+        echo view('admin/donate-title', $data);
+    }
+
+    public function titleVerify()
+    {
+        $donate = new DonateModel();
+
+        $data = [
+            'status' => 0,
+        ];
+
+        $donate->update( $this->request->getPost('id_donate') , $data);
+        return redirect()->to('admin/donate/title');
     }
 
     public function verify()
@@ -77,6 +99,7 @@ class Donate extends BaseController
         $donate->replace([
             'id_donate' => $this->request->getPost('id_donate'),
             'donors' => $this->request->getPost('donors'),
+            'npm' => $this->request->getPost('npm'),
             'title' => $this->request->getPost('title'),
             'author' => $this->request->getPost('author'),
             'picture' => $thumbnailName,
