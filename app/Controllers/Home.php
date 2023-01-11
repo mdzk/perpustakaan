@@ -79,6 +79,38 @@ class Home extends BaseController
         }
     }
 
+    public function materialsVideos()
+    {
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 2,
+            'id_articles' => 1
+        ]);
+
+        $material = new TeachingMaterialsModel();
+
+        $data = [
+            'materials' => $material->where('status', 1)->orderBy('id_materials', 'desc')->find(),
+        ];
+
+        return view('opac/materials', $data);       
+    }
+    public function materialsDocuments()
+    {
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 2,
+            'id_articles' => 1
+        ]);
+
+        $material = new TeachingMaterialsModel();
+
+        $data = [
+            'materials' => $material->where('status', 2)->orderBy('id_materials', 'desc')->find(),
+        ];
+
+        return view('opac/materials', $data);       
+    }
     public function materials()
     {
         $visitor = new VisitorsModel();
@@ -88,10 +120,12 @@ class Home extends BaseController
         ]);
 
         $material = new TeachingMaterialsModel();
+
         $data = [
             'materials' => $material->orderBy('id_materials', 'desc')->find(),
         ];
 
         return view('opac/materials', $data);
+        
     }
 }

@@ -15,20 +15,7 @@
                 <div class="sub-headline">
                     Cari buku yang kamu cari disini secara spesifik!
                 </div>
-                <!-- <div class="row four-point">
-                    <div class="col-md-6">
-                        <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Header/HeaderFinance-1/Vector.png" alt="vector" class="me-3"> Licensed & Regulated
-                    </div>
-                    <div class="col-md-6">
-                        <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Header/HeaderFinance-1/Vector.png" alt="vector" class="me-3"> Hassle-free
-                    </div>
-                    <div class="col-md-6">
-                        <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Header/HeaderFinance-1/Vector.png" alt="vector" class="me-3"> 100% Transparent
-                    </div>
-                    <div class="col-md-6">
-                        <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Header/HeaderFinance-1/Vector.png" alt="vector" class="me-3"> Across 180+ Countries
-                    </div>
-                </div> -->
+                
             </div>
             <div class="col-lg-6 mt-5 mt-md-0">
                 <div class="card">
@@ -132,7 +119,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card">
                         <div class="card-content">
-                            <img class="card-img-top img-fluid" style="object-fit: cover;" src="http://localhost/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
+                            <img class="card-img-top img-fluid" style="object-fit: cover;" src="<?= base_url(); ?>/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
                             <div class="card-body">
                                 <?php foreach ($authors as $author): ?>
                                     <?php if($biblio['biblio_id'] == $author['biblio_id']): ?>

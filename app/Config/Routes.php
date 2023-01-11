@@ -45,6 +45,8 @@ $routes->post('/proses', 'Home::proses');
 
 $routes->get('/gethosting', 'Home::hosting', ['as' => 'home-hosting']);
 $routes->get('/materials', 'Home::materials', ['as' => 'home-materials']);
+$routes->get('/materials/videos', 'Home::materialsVideos');
+$routes->get('/materials/documents', 'Home::materialsDocuments');
 
 $routes->get('/admin', 'Admin::index', ['as' => 'home', 'filter' => 'auth']);
 $routes->get('/admin/statistic', 'Admin::statistic', ['as' => 'statistic-lab']);
@@ -55,37 +57,37 @@ $routes->post('/admin/setting/update', 'Setting::update', ['as' => 'setting-upda
 
 // Management Users Section
 $routes->get('/admin/users', 'Users::index', ['as' => 'users', 'filter' => 'auth:admin']);
-$routes->post('/admin/users/add', 'Users::add', ['as' => 'users-add', 'filter' => 'auth']);
-$routes->post('/admin/users/delete', 'Users::delete', ['as' => 'users-delete', 'filter' => 'auth']);
-$routes->post('/admin/users/update', 'Users::update', ['as' => 'users-update', 'filter' => 'auth']);
+$routes->post('/admin/users/add', 'Users::add', ['as' => 'users-add', 'filter' => 'auth:admin']);
+$routes->post('/admin/users/delete', 'Users::delete', ['as' => 'users-delete', 'filter' => 'auth:admin']);
+$routes->post('/admin/users/update', 'Users::update', ['as' => 'users-update', 'filter' => 'auth:admin']);
 
 // Article Section
-$routes->get('/admin/article', 'Article::index', ['as' => 'article', 'filter' => 'auth']);
-$routes->get('/admin/article/add', 'Article::add', ['as' => 'article-add', 'filter' => 'auth']);
-$routes->post('/admin/article/save', 'Article::save', ['as' => 'article-save', 'filter' => 'auth']);
-$routes->post('/admin/article/delete', 'Article::delete', ['as' => 'article-delete', 'filter' => 'auth']);
-$routes->get('/admin/article/edit/(:num)', 'Article::edit/$1', ['as' => 'article-edit', 'filter' => 'auth']);
-$routes->post('/admin/article/update', 'Article::update', ['as' => 'article-update', 'filter' => 'auth']);
+$routes->get('/admin/article', 'Article::index', ['as' => 'article', 'filter' => 'auth:staff']);
+$routes->get('/admin/article/add', 'Article::add', ['as' => 'article-add', 'filter' => 'auth:staff']);
+$routes->post('/admin/article/save', 'Article::save', ['as' => 'article-save', 'filter' => 'auth:staff']);
+$routes->post('/admin/article/delete', 'Article::delete', ['as' => 'article-delete', 'filter' => 'auth:staff']);
+$routes->get('/admin/article/edit/(:num)', 'Article::edit/$1', ['as' => 'article-edit', 'filter' => 'auth:staff']);
+$routes->post('/admin/article/update', 'Article::update', ['as' => 'article-update', 'filter' => 'auth:staff']);
 
 // Category Section
-$routes->get('/admin/category', 'Category::index', ['as' => 'category', 'filter' => 'auth']);
-$routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save', 'filter' => 'auth']);
-$routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth']);
-$routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth']);
+$routes->get('/admin/category', 'Category::index', ['as' => 'category', 'filter' => 'auth:staff']);
+$routes->post('/admin/category/save', 'Category::save', ['as' => 'category-save', 'filter' => 'auth:staff']);
+$routes->post('/admin/category/delete', 'Category::delete', ['as' => 'category-delete', 'filter' => 'auth:staff']);
+$routes->post('/admin/category/update', 'Category::update', ['as' => 'category-update', 'filter' => 'auth:staff']);
 
 // Donate Section
-$routes->get('/admin/donate', 'Donate::index', ['as' => 'donate', 'filter' => 'auth']);
-$routes->get('/admin/donate/history', 'Donate::history', ['as' => 'donate-history', 'filter' => 'auth']);
-$routes->post('/admin/donate/save', 'Donate::save', ['as' => 'donate-save', 'filter' => 'auth']);
-$routes->post('/admin/donate/delete', 'Donate::delete', ['as' => 'donate-delete', 'filter' => 'auth']);
-$routes->post('/admin/donate/update', 'Donate::update', ['as' => 'donate-update', 'filter' => 'auth']);
-$routes->post('/admin/donate/verify', 'Donate::verify', ['as' => 'donate-verify', 'filter' => 'auth']);
+$routes->get('/admin/donate', 'Donate::index', ['as' => 'donate', 'filter' => 'auth:staff']);
+$routes->get('/admin/donate/history', 'Donate::history', ['as' => 'donate-history', 'filter' => 'auth:staff']);
+$routes->post('/admin/donate/save', 'Donate::save', ['as' => 'donate-save', 'filter' => 'auth:staff']);
+$routes->post('/admin/donate/delete', 'Donate::delete', ['as' => 'donate-delete', 'filter' => 'auth:staff']);
+$routes->post('/admin/donate/update', 'Donate::update', ['as' => 'donate-update', 'filter' => 'auth:staff']);
+$routes->post('/admin/donate/verify', 'Donate::verify', ['as' => 'donate-verify', 'filter' => 'auth:staff']);
 
 // Teaching Materials Section
-$routes->get('/admin/materials', 'TeachingMaterials::index', ['as' => 'materials', 'filter' => 'auth']);
-$routes->post('/admin/materials/save', 'TeachingMaterials::save', ['as' => 'materials-save', 'filter' => 'auth']);
-$routes->post('/admin/materials/delete', 'TeachingMaterials::delete', ['as' => 'materials-delete', 'filter' => 'auth']);
-$routes->post('/admin/materials/update', 'TeachingMaterials::update', ['as' => 'materials-update', 'filter' => 'auth']);
+$routes->get('/admin/materials', 'TeachingMaterials::index', ['as' => 'materials', 'filter' => 'auth:staff']);
+$routes->post('/admin/materials/save', 'TeachingMaterials::save', ['as' => 'materials-save', 'filter' => 'auth:staff']);
+$routes->post('/admin/materials/delete', 'TeachingMaterials::delete', ['as' => 'materials-delete', 'filter' => 'auth:staff']);
+$routes->post('/admin/materials/update', 'TeachingMaterials::update', ['as' => 'materials-update', 'filter' => 'auth:staff']);
 
 // Authentication Section
 $routes->get('/login', 'Auth::index', ['as' => 'login']);

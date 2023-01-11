@@ -20,6 +20,12 @@
         </div>
         <div class="row">
 
+            <div class="col-md-12 d-flex justify-content-center mt-2">
+                <a href="<?= base_url(); ?>/materials" class="btn <?= get_url(3, '') ? 'btn-primary' : 'btn-light-primary' ?> rounded-pill m-2">Semua</a>
+                <a href="<?= base_url(); ?>/materials/videos" class="btn <?= get_url(3, 'videos') ? 'btn-primary' : 'btn-light-primary' ?> rounded-pill m-2">Video</a>
+                <a href="<?= base_url(); ?>/materials/documents" class="btn <?= get_url(3, 'documents') ? 'btn-primary' : 'btn-light-primary' ?> rounded-pill m-2">Dokumen</a>
+            </div>
+
             <?php foreach ($materials as $material) : ?>
 
                 <div class="col-md-3 mt-5">

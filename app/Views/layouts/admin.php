@@ -50,6 +50,7 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
+                    <?php if ($_SESSION['roles'] == 'staff') : ?>
                         <li class="sidebar-title">Menu</li>
 
                         <?php route_to('home') ?>
@@ -87,7 +88,7 @@
                                 <span>Bahan Ajar</span>
                             </a>
                         </li>
-
+                        <?php endif; ?>
                         <li class="sidebar-title">Pengaturan</li>
 
                         <li class="sidebar-item <?= get_url(3, 'setting') ? 'active' : '' ?>">
