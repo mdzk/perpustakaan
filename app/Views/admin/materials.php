@@ -47,6 +47,7 @@
                                 <input type="text" name="material" class="form-control" id="basicInput" placeholder="Masukkan Nama Pengarang" required>
                             </div>
                             <div class="form-group">
+                                <label for="basicInput">Program Studi</label>
                                 <select name='id_prodi' class="form-select" id="basicSelect">
                                     <?php foreach ($prodies as $prodi) : ?>
                                         <option value="<?= $prodi['id_prodi']; ?>"><?= $prodi['name']; ?></option>
@@ -90,6 +91,7 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="basicInput">Program Studi</label>
                                 <select name='id_prodi' class="form-select" id="basicSelect">
                                     <?php foreach ($prodies as $prodi) : ?>
                                         <option value="<?= $prodi['id_prodi']; ?>"><?= $prodi['name']; ?></option>

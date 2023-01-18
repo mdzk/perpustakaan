@@ -111,6 +111,8 @@ $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 $routes->get('/opac', 'Opac::index', ['as' => 'opac']);
 $routes->post('/opac/proses', 'Opac::proses');
 $routes->get('/opac/search/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)/(:segment)', 'Opac::search/$1/$2/$3/$4/$5/$6/$7', ['as' => 'home-opac-search']);
+$routes->get('/book/(:segment)', 'Opac::detail/$1', ['as' => 'home-book-detail']);
+$routes->get('/book', 'Opac::book', ['as' => 'home-book']);
 
 /*
  * --------------------------------------------------------------------

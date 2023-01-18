@@ -44,6 +44,16 @@
                                         <label for="basicInput">Pengarang</label>
                                         <input type="text" name="author" class="form-control" id="basicInput" placeholder="Masukkan Nama Pengarang" @error('name') is-invalid @enderror>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="basicInput">Program Studi</label>
+                                        <select name='id_prodi' class="form-select" id="basicSelect">
+                                            <option selected disabled>-- Pilih Program Studi --</option>
+                                            <?php foreach ($prodies as $prodi) : ?>
+                                                <option value="<?= $prodi['id_prodi']; ?>"><?= $prodi['name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
@@ -80,8 +90,8 @@
                                                 <td class="text-bold-500">
                                                     <?php if ($donate['donors'] == '') { ?>
                                                         <span class="badge bg-light-danger mx-2">Belum terdapat donatur</span>
-                                                        <?php } else {; ?>
-                                                            <span class="badge bg-light-primary mx-2"><?= $donate['donors']; ?></span>
+                                                    <?php } else {; ?>
+                                                        <span class="badge bg-light-primary mx-2"><?= $donate['donors']; ?></span>
                                                     <?php }; ?>
                                                 </td>
                                                 <td class="text-bold-500">

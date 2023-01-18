@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ArticlesModel;
 use App\Models\DonateModel;
+use App\Models\ProdiModel;
 use App\Models\TeachingMaterialsModel;
 use App\Models\VisitorsModel;
 
@@ -14,7 +15,7 @@ class Home extends BaseController
     {
         $visitor = new VisitorsModel();
         $visitor->save([
-            'type' => 2,
+            'type' => 1,
             'id_articles' => 1
         ]);
 
@@ -28,6 +29,12 @@ class Home extends BaseController
 
     public function article()
     {
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
+
         $article = new ArticlesModel();
         $data = [
             'articles' => $article->join('categories', 'categories.id_categories = articles.id_categories')->orderBy('date', 'desc')->findAll(),
@@ -53,10 +60,17 @@ class Home extends BaseController
 
     public function donate()
     {
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
 
+        $prodi = new ProdiModel();
         $donate = new DonateModel();
         $data = [
-            'donates' => $donate->where(['status'=> 0, 'donors' => NULL])->findAll(),
+            'prodies' => $prodi->findAll(),
+            'donates' => $donate->where(['status' => 0, 'donors' => NULL])->findAll(),
         ];
         return view('opac/donate', $data);
     }
@@ -70,7 +84,7 @@ class Home extends BaseController
             'npm' => $this->request->getPost('npm'),
         ];
 
-        $donate->update($this->request->getPost('id-form') ,$data);
+        $donate->update($this->request->getPost('id-form'), $data);
         return redirect()->to('donate');
     }
 
@@ -81,6 +95,7 @@ class Home extends BaseController
         $data = [
             'title' => $this->request->getPost('title-add'),
             'author' => $this->request->getPost('author-add'),
+            'id_prodi' => $this->request->getPost('id_prodi'),
             'status' => 2,
         ];
 
@@ -96,6 +111,12 @@ class Home extends BaseController
 
     public function search($keyword)
     {
+
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
 
         $article = new ArticlesModel();
         if ($keyword == '') {
@@ -114,6 +135,13 @@ class Home extends BaseController
 
     public function materialsVideos()
     {
+
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
+
         $visitor = new VisitorsModel();
         $visitor->save([
             'type' => 2,
@@ -130,6 +158,13 @@ class Home extends BaseController
     }
     public function materialsDocuments()
     {
+
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
+
         $visitor = new VisitorsModel();
         $visitor->save([
             'type' => 2,
@@ -146,6 +181,13 @@ class Home extends BaseController
     }
     public function materials()
     {
+
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
+
         $visitor = new VisitorsModel();
         $visitor->save([
             'type' => 2,

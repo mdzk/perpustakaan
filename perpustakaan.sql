@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 17 Des 2022 pada 23.23
+-- Waktu pembuatan: 11 Jan 2023 pada 09.53
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -80,15 +80,29 @@ CREATE TABLE `donate` (
   `author` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
   `picture` varchar(255) DEFAULT NULL,
+  `npm` int(8) DEFAULT NULL,
   `id_users` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `donate`
+-- Struktur dari tabel `prodi`
 --
 
-INSERT INTO `donate` (`id_donate`, `donors`, `title`, `author`, `status`, `picture`, `id_users`) VALUES
-(15, NULL, 'Laskar Pelangi', 'Andrea Hirata', 0, NULL, 1);
+CREATE TABLE `prodi` (
+  `id_prodi` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `prodi`
+--
+
+INSERT INTO `prodi` (`id_prodi`, `name`) VALUES
+(1, 'Manajemen Informatika'),
+(2, 'Akuntansi Digital'),
+(3, 'Pariwisata');
 
 -- --------------------------------------------------------
 
@@ -102,16 +116,16 @@ CREATE TABLE `teaching_materials` (
   `material` text NOT NULL,
   `description` text NOT NULL,
   `status` int(11) NOT NULL,
-  `id_users` int(11) NOT NULL
+  `id_users` int(11) NOT NULL,
+  `id_prodi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `teaching_materials`
 --
 
-INSERT INTO `teaching_materials` (`id_materials`, `title`, `material`, `description`, `status`, `id_users`) VALUES
-(10, 'Agribisnis - Manajemen Pemasaran oleh Fitriani, S.P., M.E.P', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/C-twZZtBD1I\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '-', 1, 0),
-(11, 'pdf edit', '1671310117_2362c56c60f315e69f85.pdf', 'pdf des edited', 2, 0);
+INSERT INTO `teaching_materials` (`id_materials`, `title`, `material`, `description`, `status`, `id_users`, `id_prodi`) VALUES
+(10, 'Agribisnis - Manajemen Pemasaran oleh Fitriani, S.P., M.E.P', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/C-twZZtBD1I\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '-', 1, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -133,7 +147,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_users`, `name`, `username`, `password`, `roles`) VALUES
 (1, 'Muhammad Dzaky', 'admin', '$2y$10$brHpBxzQG/p.hvUfVX3uhuITpvLwCgMRRHi6BwwwK76LUpcbPJJdO', 'admin'),
-(4, 'Marta Santra Wijaya', 'staff', '$2y$10$LfyWnXERGYNhqUKOI1qftO.66XpsNU99EpLJLarZb/RWlFyeKQkom', 'staff');
+(4, 'Marta Santra Wijaya', 'staff', '$2y$10$H1AUjN87AB38.gi7gm4IWeKqApOKeHu6LY2Ezs2ppkl9Bs9.zdQhC', 'staff');
 
 -- --------------------------------------------------------
 
@@ -696,7 +710,115 @@ INSERT INTO `visitors` (`id_visitors`, `type`, `created_at`, `id_articles`) VALU
 (541, 2, '2022-12-17 21:36:15', 1),
 (542, 2, '2022-12-17 21:36:24', 1),
 (543, 2, '2022-12-17 21:36:29', 1),
-(544, 2, '2022-12-17 21:36:42', 1);
+(544, 2, '2022-12-17 21:36:42', 1),
+(545, 2, '2023-01-09 06:44:25', 1),
+(546, 2, '2023-01-09 06:44:41', 1),
+(547, 2, '2023-01-09 06:44:55', 1),
+(548, 2, '2023-01-09 06:53:47', 1),
+(549, 2, '2023-01-09 06:53:52', 1),
+(550, 2, '2023-01-09 06:54:28', 1),
+(551, 2, '2023-01-09 06:54:29', 1),
+(552, 2, '2023-01-09 06:54:29', 1),
+(553, 2, '2023-01-09 06:54:29', 1),
+(554, 2, '2023-01-09 06:54:30', 1),
+(555, 2, '2023-01-09 06:54:30', 1),
+(556, 2, '2023-01-09 06:55:01', 1),
+(557, 2, '2023-01-09 07:01:48', 1),
+(558, 2, '2023-01-09 07:03:21', 1),
+(559, 2, '2023-01-09 07:05:17', 1),
+(560, 2, '2023-01-09 07:05:37', 1),
+(561, 2, '2023-01-09 07:05:39', 1),
+(562, 2, '2023-01-09 07:05:53', 1),
+(563, 2, '2023-01-09 07:06:09', 1),
+(564, 2, '2023-01-09 07:07:01', 1),
+(565, 2, '2023-01-09 07:07:31', 1),
+(566, 2, '2023-01-09 07:07:32', 1),
+(567, 2, '2023-01-09 07:07:32', 1),
+(568, 2, '2023-01-09 07:07:33', 1),
+(569, 2, '2023-01-09 07:07:33', 1),
+(570, 2, '2023-01-09 07:09:04', 1),
+(571, 2, '2023-01-09 07:09:27', 1),
+(572, 2, '2023-01-09 07:09:42', 1),
+(573, 2, '2023-01-09 07:09:52', 1),
+(574, 2, '2023-01-09 07:18:02', 1),
+(575, 2, '2023-01-09 07:18:15', 1),
+(576, 2, '2023-01-09 07:18:21', 1),
+(577, 2, '2023-01-09 07:18:27', 1),
+(578, 2, '2023-01-09 07:35:12', 1),
+(579, 2, '2023-01-11 04:37:51', 1),
+(580, 2, '2023-01-11 04:38:15', 1),
+(581, 2, '2023-01-11 04:39:58', 1),
+(582, 2, '2023-01-11 04:40:16', 1),
+(583, 2, '2023-01-11 04:40:48', 1),
+(584, 2, '2023-01-11 04:40:52', 1),
+(585, 2, '2023-01-11 04:41:04', 1),
+(586, 2, '2023-01-11 04:42:47', 1),
+(587, 2, '2023-01-11 04:43:14', 1),
+(588, 2, '2023-01-11 04:43:30', 1),
+(589, 2, '2023-01-11 04:44:49', 1),
+(590, 2, '2023-01-11 04:44:58', 1),
+(591, 2, '2023-01-11 04:45:01', 1),
+(592, 2, '2023-01-11 04:45:03', 1),
+(593, 2, '2023-01-11 04:46:27', 1),
+(594, 2, '2023-01-11 04:47:12', 1),
+(595, 2, '2023-01-11 04:47:14', 1),
+(596, 2, '2023-01-11 04:47:16', 1),
+(597, 2, '2023-01-11 04:47:18', 1),
+(598, 2, '2023-01-11 04:47:30', 1),
+(599, 2, '2023-01-11 04:47:32', 1),
+(600, 2, '2023-01-11 04:47:35', 1),
+(601, 2, '2023-01-11 04:47:37', 1),
+(602, 2, '2023-01-11 04:47:39', 1),
+(603, 2, '2023-01-11 05:11:16', 1),
+(604, 2, '2023-01-11 05:21:54', 1),
+(605, 2, '2023-01-11 05:21:58', 1),
+(606, 2, '2023-01-11 08:43:15', 1),
+(607, 2, '2023-01-11 08:43:22', 1),
+(608, 2, '2023-01-11 08:45:03', 1),
+(609, 2, '2023-01-11 08:47:14', 1),
+(610, 2, '2023-01-11 08:47:29', 1),
+(611, 2, '2023-01-11 08:47:30', 1),
+(612, 2, '2023-01-11 08:47:30', 1),
+(613, 2, '2023-01-11 08:47:30', 1),
+(614, 2, '2023-01-11 08:47:30', 1),
+(615, 2, '2023-01-11 08:47:30', 1),
+(616, 2, '2023-01-11 08:47:36', 1),
+(617, 2, '2023-01-11 08:47:37', 1),
+(618, 2, '2023-01-11 08:47:37', 1),
+(619, 2, '2023-01-11 08:47:37', 1),
+(620, 2, '2023-01-11 08:47:37', 1),
+(621, 2, '2023-01-11 08:47:38', 1),
+(622, 2, '2023-01-11 08:47:50', 1),
+(623, 2, '2023-01-11 08:47:50', 1),
+(624, 2, '2023-01-11 08:47:51', 1),
+(625, 2, '2023-01-11 08:47:51', 1),
+(626, 2, '2023-01-11 08:47:51', 1),
+(627, 2, '2023-01-11 08:47:51', 1),
+(628, 2, '2023-01-11 08:48:29', 1),
+(629, 2, '2023-01-11 08:48:29', 1),
+(630, 2, '2023-01-11 08:48:29', 1),
+(631, 2, '2023-01-11 08:48:29', 1),
+(632, 2, '2023-01-11 08:48:29', 1),
+(633, 2, '2023-01-11 08:48:29', 1),
+(634, 2, '2023-01-11 08:48:29', 1),
+(635, 2, '2023-01-11 08:48:29', 1),
+(636, 2, '2023-01-11 08:48:29', 1),
+(637, 2, '2023-01-11 08:48:30', 1),
+(638, 2, '2023-01-11 08:48:30', 1),
+(639, 2, '2023-01-11 08:48:30', 1),
+(640, 2, '2023-01-11 08:48:30', 1),
+(641, 2, '2023-01-11 08:48:30', 1),
+(642, 2, '2023-01-11 08:48:30', 1),
+(643, 2, '2023-01-11 08:49:35', 1),
+(644, 2, '2023-01-11 08:49:59', 1),
+(645, 2, '2023-01-11 08:50:00', 1),
+(646, 2, '2023-01-11 08:50:02', 1),
+(647, 2, '2023-01-11 08:50:04', 1),
+(648, 2, '2023-01-11 08:50:05', 1),
+(649, 2, '2023-01-11 08:50:06', 1),
+(650, 2, '2023-01-11 08:51:28', 1),
+(651, 2, '2023-01-11 08:53:20', 1),
+(652, 2, '2023-01-11 08:53:21', 1);
 
 --
 -- Indexes for dumped tables
@@ -721,6 +843,12 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `donate`
   ADD PRIMARY KEY (`id_donate`);
+
+--
+-- Indeks untuk tabel `prodi`
+--
+ALTER TABLE `prodi`
+  ADD PRIMARY KEY (`id_prodi`);
 
 --
 -- Indeks untuk tabel `teaching_materials`
@@ -760,7 +888,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT untuk tabel `donate`
 --
 ALTER TABLE `donate`
-  MODIFY `id_donate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_donate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT untuk tabel `prodi`
+--
+ALTER TABLE `prodi`
+  MODIFY `id_prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `teaching_materials`
@@ -778,7 +912,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=545;
+  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=653;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -30,10 +30,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-vertical">Judul</label>
-                                            <input name="title" type="text" id="first-name-vertical" class="form-control {{$errors->first('title') ? "is-invalid" : ""}}" name="title" placeholder="Masukkan judul artikel">
-                                            <div class="invalid-feedback">
-                                                {{$errors->first('title')}}
-                                            </div>
+                                            <input name="title" type="text" id="first-name-vertical" class="form-control" name="title" placeholder="Masukkan judul artikel">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -41,16 +38,12 @@
                                             <label for="email-id-vertical">Kategori</label>
                                             <fieldset class="form-group">
 
-                                                <select name='id_categories' class="form-select {{$errors->first('category') ? "is-invalid" : ""}}" id="basicSelect">
+                                                <select name='id_prodi' class="form-select" id="basicSelect">
                                                     <option selected disabled>-- Pilih Kategori --</option>
-                                                    <?php foreach($categories as $category): ?>
-                                                    <option value="<?= $category['id_categories']; ?>"><?= $category['name']; ?></option>
+                                                    <?php foreach ($categories as $category) : ?>
+                                                        <option value="<?= $category['id_categories']; ?>"><?= $category['name']; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
-
-                                                <div class="invalid-feedback">
-                                                    {{$errors->first('category')}}
-                                                </div>
 
                                             </fieldset>
                                         </div>

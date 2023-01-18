@@ -18,7 +18,7 @@ class Opac extends BaseController
 
         $visitor = new VisitorsModel();
         $visitor->save([
-            'type' => 2,
+            'type' => 1,
             'id_articles' => 1
         ]);
 
@@ -39,14 +39,15 @@ class Opac extends BaseController
         return view('opac/home', $data);
     }
 
-    public function proses() {
+    public function proses()
+    {
 
         $title = trim(strip_tags(urldecode($_POST['title'])));
         if ($_POST['title'] == '') {
             $title = '-';
         }
 
-        if(isset($_POST["author_name"])) {
+        if (isset($_POST["author_name"])) {
             $author_name = trim(strip_tags(urldecode($_POST['author_name'])));
             if ($_POST["author_name"] == "") {
                 $author_name = "-";
@@ -55,7 +56,7 @@ class Opac extends BaseController
             $author_name = "-";
         }
 
-        if(isset($_POST["topic"])) {
+        if (isset($_POST["topic"])) {
             $topic = trim(strip_tags(urldecode($_POST['topic'])));
             if ($_POST['topic'] == '') {
                 $topic = '-';
@@ -82,7 +83,7 @@ class Opac extends BaseController
             $gmd = '-';
         }
 
-        if(isset($_POST['coll_type'])) {
+        if (isset($_POST['coll_type'])) {
             $coll_type = trim(strip_tags(urldecode($_POST['coll_type'])));
             if ($_POST['coll_type'] == '') {
                 $coll_type = '-';
@@ -91,7 +92,7 @@ class Opac extends BaseController
             $coll_type = '-';
         }
 
-        if(isset($_POST['location'])) {
+        if (isset($_POST['location'])) {
             $location = trim(strip_tags(urldecode($_POST['location'])));
             if ($_POST['location'] == '') {
                 $location = '-';
@@ -105,57 +106,98 @@ class Opac extends BaseController
 
     public function search($get_title, $get_author, $get_subject, $get_isbn_issn, $get_gmd, $get_coll_type, $get_location)
     {
+
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
+
         $biblio = new SearchBiblioModel();
         $mst_author = new MstAuthorModel();
-        
+
         $title = "title LIKE '%$get_title%'";
         if ($get_title == "-") {
             $title = "(title LIKE '%%' OR title IS NULL)";
         }
-        
+
         $author = "author LIKE '%$get_author%'";
         if ($get_author == "-") {
             $author = "(author LIKE '%%' OR author IS NULL)";
         }
-        
+
         $subject = "topic LIKE '$get_subject'";
         if ($get_subject == "-") {
             $subject = "(topic LIKE '%%' OR topic IS NULL)";
         }
-        
+
         $isbn_issn = "isbn_issn LIKE '%$get_isbn_issn%'";
         if ($get_isbn_issn == "-") {
             $isbn_issn = "(isbn_issn LIKE '%%' OR isbn_issn IS NULL)";
         }
-        
+
         $gmd = "gmd LIKE '%$get_gmd%'";
         if ($get_gmd == "-") {
             $gmd = "(gmd LIKE '%%' OR gmd IS NULL)";
         }
-        
+
         $coll_type = "collection_types LIKE '%$get_coll_type%'";
         if ($get_coll_type == "-") {
             $coll_type = "(collection_types LIKE '%%' OR collection_types IS NULL)";
         }
-        
+
         $location = "location LIKE '%$get_location%'";
         if ($get_location == "-") {
             $location = "(location LIKE '%%' OR location IS NULL)";
         }
-        
+
         $data = [
             'keyword' => $get_title,
             'biblios' => $biblio
-            ->where($title)
-            ->where($author)
-            ->where($subject)
-            ->where($isbn_issn)
-            ->where($gmd)
-            ->where($coll_type)
-            ->where($location)
-            ->orderBy('input_date', 'desc')
-            ->findAll()
+                ->where($title)
+                ->where($author)
+                ->where($subject)
+                ->where($isbn_issn)
+                ->where($gmd)
+                ->where($coll_type)
+                ->where($location)
+                ->orderBy('input_date', 'desc')
+                ->findAll()
         ];
         return view('opac/search', $data);
+    }
+
+    public function detail($id)
+    {
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 3,
+            'id_articles' => $id
+        ]);
+
+        $biblio = new SearchBiblioModel();
+
+        $data = [
+            'biblio' => $biblio->where('biblio_id', $id)->first(),
+        ];
+
+        return view('opac/book-detail', $data);
+    }
+
+    public function book()
+    {
+        $visitor = new VisitorsModel();
+        $visitor->save([
+            'type' => 1,
+            'id_articles' => 1
+        ]);
+
+        $biblio = new SearchBiblioModel();
+
+        $data = [
+            'biblios' => $biblio->findAll(),
+        ];
+
+        return view('opac/book', $data);
     }
 }

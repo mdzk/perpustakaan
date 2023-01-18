@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\DonateModel;
+use App\Models\ProdiModel;
 
 class Donate extends BaseController
 {
     public function index()
     {
         $donate = new DonateModel();
+        $prodi = new ProdiModel();
         $data = [
+            'prodies' => $prodi->findAll(),
             'donates' => $donate->where('status', 0)->findAll(),
         ];
         echo view('admin/donate', $data);
@@ -20,6 +24,7 @@ class Donate extends BaseController
         $donate->save([
             'title' => $this->request->getPost('title'),
             'author' => $this->request->getPost('author'),
+            'id_prodi' => $this->request->getPost('id_prodi'),
             'status' => 0,
             'id_users' => session()->get('id_users'),
         ]);
@@ -34,8 +39,8 @@ class Donate extends BaseController
         $data = $donate->find($id);
         if ($data['picture'] == '') {
             $donate->delete($id);
-        } else if ($data['picture'] != 'default.jpg'){
-            unlink('img/'. $data['picture']);
+        } else if ($data['picture'] != 'default.jpg') {
+            unlink('img/' . $data['picture']);
             $donate->delete($id);
         }
         session()->setFlashdata('pesan', 'Buku berhasil dihapus');
@@ -81,7 +86,7 @@ class Donate extends BaseController
             'status' => 0,
         ];
 
-        $donate->update( $this->request->getPost('id_donate') , $data);
+        $donate->update($this->request->getPost('id_donate'), $data);
         return redirect()->to('admin/donate/title');
     }
 
