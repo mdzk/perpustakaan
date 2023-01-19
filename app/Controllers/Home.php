@@ -142,12 +142,6 @@ class Home extends BaseController
             'id_articles' => 1
         ]);
 
-        $visitor = new VisitorsModel();
-        $visitor->save([
-            'type' => 2,
-            'id_articles' => 1
-        ]);
-
         $material = new TeachingMaterialsModel();
 
         $data = [
@@ -165,12 +159,6 @@ class Home extends BaseController
             'id_articles' => 1
         ]);
 
-        $visitor = new VisitorsModel();
-        $visitor->save([
-            'type' => 2,
-            'id_articles' => 1
-        ]);
-
         $material = new TeachingMaterialsModel();
 
         $data = [
@@ -185,12 +173,6 @@ class Home extends BaseController
         $visitor = new VisitorsModel();
         $visitor->save([
             'type' => 1,
-            'id_articles' => 1
-        ]);
-
-        $visitor = new VisitorsModel();
-        $visitor->save([
-            'type' => 2,
             'id_articles' => 1
         ]);
 

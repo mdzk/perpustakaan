@@ -10,7 +10,6 @@
 
                 <div class="card">
                     <img class="card-img-top img-fluid" style="object-fit: cover;" src="http://localhost/slims/lib/minigalnano/createthumb.php?filename=images/docs/<?= $biblio['image']; ?>&width=200" alt="Card image cap" style="height: 20rem">
-
                 </div>
 
             </div>
