@@ -146,23 +146,35 @@
 
     <script src="<?= base_url(); ?>/assets/js/app.js"></script>
     <script src="<?= base_url(); ?>/assets/js/extensions/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/pages/dashboard.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/extensions/summernote.js"></script>
+    <script src="<?= base_url(); ?>/assets/js/extensions/sweetalert2.min.js"></script>
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
     <script>
         var wtf = $.ajax({
             url: "<?= base_url() . '/admin/statistic'; ?>",
             async: false,
             dataType: 'json'
         }).responseJSON;
-    </script>
-    <script src="<?= base_url(); ?>/assets/js/pages/dashboard.js"></script>
-    <script src="<?= base_url(); ?>/assets/js/extensions/summernote.js"></script>
-    <!-- <script src="<?= base_url(); ?>/assets/js/extensions/sweetalert2.js"></script> -->
-    <script src="<?= base_url(); ?>/assets/js/extensions/sweetalert2.min.js"></script>
-    <script>
+
         $("#summernote").summernote({
             tabsize: 2,
             height: 320,
         })
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('b22a3bdf4cf04b53a0bc', {
+            cluster: 'ap1'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            alert(JSON.stringify(data));
+        });
     </script>
+
     <?php if (session()->getFlashdata('pesan')) : ?>
         <script>
             Swal.fire(

@@ -7,6 +7,7 @@ use App\Models\DonateModel;
 use App\Models\ProdiModel;
 use App\Models\TeachingMaterialsModel;
 use App\Models\VisitorsModel;
+use Pusher\Pusher;
 
 class Home extends BaseController
 {
@@ -78,6 +79,17 @@ class Home extends BaseController
     public function donateUpdate()
     {
         $donate  = new DonateModel();
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+
+        $pusher = new Pusher(
+            'b22a3bdf4cf04b53a0bc',
+            '5cdbb233d4b2bfb6f6c3',
+            '1540951',
+            $options
+        );
 
         $data = [
             'donors' => $this->request->getPost('donors'),
@@ -85,6 +97,9 @@ class Home extends BaseController
         ];
 
         $donate->update($this->request->getPost('id-form'), $data);
+
+        $data['message'] = 'success';
+        $pusher->trigger('my-channel', 'my-event', $data);
         return redirect()->to('donate');
     }
 
