@@ -152,41 +152,14 @@
                                         <li class="dropdown-header">
                                             <h6>Notifications</h6>
                                         </li>
-                                        <li class="dropdown-item notification-item">
-                                            <a class="d-flex align-items-center" href="#">
-                                                <div class="notification-icon bg-primary">
-                                                    <i class="bi bi-cart-check"></i>
-                                                </div>
-                                                <div class="notification-text ms-4">
-                                                    <p class="notification-title font-bold">
-                                                        Successfully check out
-                                                    </p>
-                                                    <p class="notification-subtitle font-thin text-sm">
-                                                        Order ID #256
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="dropdown-item notification-item">
-                                            <a class="d-flex align-items-center" href="#">
-                                                <div class="notification-icon bg-success">
-                                                    <i class="bi bi-file-earmark-check"></i>
-                                                </div>
-                                                <div class="notification-text ms-4">
-                                                    <p class="notification-title font-bold">
-                                                        Homework submitted
-                                                    </p>
-                                                    <p class="notification-subtitle font-thin text-sm">
-                                                        Algebra math homework
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
+                                        <div class="notifitem">
+
+                                        </div>
+                                        <!-- <li>
                                             <p class="text-center py-2 mb-0">
                                                 <a href="#">See all notification</a>
                                             </p>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </li>
                             </ul>
@@ -246,6 +219,16 @@
     <script src="<?= base_url(); ?>/assets/js/extensions/sweetalert2.min.js"></script>
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
     <script>
+        var count = $.ajax({
+            url: "<?= base_url(); ?>/admin/notification-count",
+            async: false,
+            dataType: 'json'
+        }).responseJSON;
+
+        if (count > 0) {
+            notificationComing();
+        }
+
         var wtf = $.ajax({
             url: "<?= base_url() . '/admin/statistic'; ?>",
             async: false,
@@ -273,45 +256,76 @@
             var el = $('#notification');
             el.addClass('text-gray-600');
             el.removeClass('text-primary');
-
             $('#notification-badge').hide();
+            notifItem();
+            changeNotificationStatus();
         }
 
         function notificationComing() {
             var el = $('#notification');
             el.addClass('text-primary');
             el.removeClass('text-gray-600');
-
+            notifCount()
             $('#notification-badge').show();
         }
 
-        // FUNCTION SHOW PRODUCT
-        // function show_notif() {
-        //     $.ajax({
-        //         url: '<?php echo site_url("product/get_product"); ?>',
-        //         type: 'GET',
-        //         async: true,
-        //         dataType: 'json',
-        //         success: function(data) {
-        //             var html = '';
-        //             var count = 1;
-        //             var i;
-        //             for (i = 0; i < data.length; i++) {
-        //                 html += '<tr>' +
-        //                     '<td>' + count++ + '</td>' +
-        //                     '<td>' + data[i].product_name + '</td>' +
-        //                     '<td>' + data[i].product_price + '</td>' +
-        //                     '<td>' +
-        //                     '<a href="javascript:void(0);" class="btn btn-sm btn-info item_edit" data-id="' + data[i].product_id + '" data-name="' + data[i].product_name + '" data-price="' + data[i].product_price + '">Edit</a>' +
-        //                     '<a href="javascript:void(0);" class="btn btn-sm btn-danger item_delete" data-id="' + data[i].product_id + '">Delete</a>' +
-        //                     '</td>' +
-        //                     '</tr>';
-        //             }
-        //             $('.show_product').html(html);
-        //         }
+        function notifCount() {
+            $.ajax({
+                url: '<?= base_url(); ?>/admin/notification-count',
+                type: 'GET',
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    $('#notification-badge').text(data);
+                }
+            });
+        }
 
-        //     });
-        // }
+        function changeNotificationStatus() {
+            $.ajax({
+                url: '<?= base_url(); ?>/admin/notification-status-change',
+                method: 'POST',
+                data: {
+                    status: true,
+                },
+                success: function() {
+                    console.log('success');
+                }
+            });
+        }
+
+        function notifItem() {
+            $.ajax({
+                url: '<?= base_url(); ?>/admin/notification-item',
+                type: 'GET',
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    var count = 1;
+                    var i;
+                    for (i = 0; i < data['data'].length; i++) {
+                        html += '<li class="dropdown-item notification-item">' +
+                            '<a class="d-flex align-items-center" href="#">' +
+                            '<div class="notification-icon">' +
+                            '<i class="bi bi-file-earmark-medical-fill"></i>' +
+                            '</div>' +
+                            '<div class="notification-text ms-4">' +
+                            '<p class="notification-title font-bold">' +
+                            data['data'][i].title +
+                            '</p>' +
+                            '<p class="notification-subtitle font-thin text-sm">' +
+                            data['data'][i].donors +
+                            '</p>' +
+                            '</div>' +
+                            '</a>' +
+                            '</li>';
+                    }
+                    $('.notifitem').html(html);
+                }
+
+            });
+        }
     </script>
 
     <?php if (session()->getFlashdata('pesan')) : ?>

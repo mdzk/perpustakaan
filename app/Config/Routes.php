@@ -54,6 +54,9 @@ $routes->post('/donate/add', 'Home::donateAdd', ['as' => 'home-donate-add']);
 
 
 $routes->get('/admin', 'Admin::index', ['as' => 'home', 'filter' => 'auth']);
+$routes->get('/admin/notification-item', 'Admin::notifItem');
+$routes->get('/admin/notification-count', 'Admin::notifCount', ['as' => 'notif-count', 'filter' => 'auth']);
+$routes->post('/admin/notification-status-change', 'Admin::notifStatusChange', ['as' => 'notif-status-change', 'filter' => 'auth']);
 $routes->get('/admin/statistic', 'Admin::statistic', ['as' => 'statistic-lab']);
 
 // Setting Section

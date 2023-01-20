@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UsersModel;
 use App\Models\ArticlesModel;
+use App\Models\DonateModel;
 use App\Models\VisitorsModel;
 
 class Admin extends BaseController
@@ -19,6 +20,30 @@ class Admin extends BaseController
             'article' => $article->countAllResults(),
         ];
         return view('admin/home', $data);
+    }
+
+    public function notifItem()
+    {
+        $donate       = new DonateModel();
+        $data = [
+            'data' => $donate->where('notification', 1)->findAll(),
+        ];
+        echo json_encode($data);
+    }
+
+    public function notifCount()
+    {
+        $donate       = new DonateModel();
+        $data = $donate->where('notification', 1)->countAllResults();
+        echo ($data);
+    }
+
+    public function notifStatusChange()
+    {
+        if ($this->request->getPost('status')) {
+            $donate = new DonateModel();
+            $donate->set('notification', 2)->where('notification', 1)->update();
+        }
     }
 
     public function statistic()

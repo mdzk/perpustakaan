@@ -94,12 +94,13 @@ class Home extends BaseController
         $data = [
             'donors' => $this->request->getPost('donors'),
             'npm' => $this->request->getPost('npm'),
+            'notification' => 1,
         ];
 
         $donate->update($this->request->getPost('id-form'), $data);
 
-        $data['message'] = 'success';
-        $pusher->trigger('my-channel', 'my-event', $data);
+        $message['message'] = 'success';
+        $pusher->trigger('my-channel', 'my-event', $message);
         return redirect()->to('donate');
     }
 
