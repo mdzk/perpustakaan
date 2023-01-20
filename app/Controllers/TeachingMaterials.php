@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ProdiModel;
 use App\Models\TeachingMaterialsModel;
+use App\Models\UsersModel;
 
 class TeachingMaterials extends BaseController
 {
@@ -11,7 +12,9 @@ class TeachingMaterials extends BaseController
     {
         $materials = new TeachingMaterialsModel();
         $prodi = new ProdiModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'materials' => $materials->findAll(),
             'prodies' => $prodi->findAll(),
         ];

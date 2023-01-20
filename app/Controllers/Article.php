@@ -3,13 +3,16 @@
 namespace App\Controllers;
 use App\Models\ArticlesModel;
 use App\Models\CategoriesModel;
+use App\Models\UsersModel;
 
 class Article extends BaseController
 {
     public function index()
     {
         $article = new ArticlesModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'articles' => $article->join('categories', 'categories.id_categories = articles.id_categories')->findAll(),
         ];
         echo view('admin/article', $data);
@@ -18,7 +21,9 @@ class Article extends BaseController
     public function add()
     {
         $category = new CategoriesModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'categories' => $category->findAll(),
         ];
         return view('admin/article-add', $data);
@@ -68,7 +73,9 @@ class Article extends BaseController
     {
         $category = new CategoriesModel();
         $article = new ArticlesModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'article' => $article->join('categories', 'categories.id_categories = articles.id_categories')->find($id),
             'categories' => $category->findAll(),
         ];

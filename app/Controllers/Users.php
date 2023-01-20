@@ -12,6 +12,7 @@ class Users extends BaseController
 
         $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'users'  => $user->findAll(),
         ];
         return view('admin/users', $data);

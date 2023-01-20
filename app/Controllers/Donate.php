@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\DonateModel;
 use App\Models\ProdiModel;
+use App\Models\UsersModel;
 
 class Donate extends BaseController
 {
@@ -11,7 +12,9 @@ class Donate extends BaseController
     {
         $donate = new DonateModel();
         $prodi = new ProdiModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'prodies' => $prodi->findAll(),
             'donates' => $donate->where('status', 0)->findAll(),
         ];
@@ -63,7 +66,10 @@ class Donate extends BaseController
     public function history()
     {
         $donate = new DonateModel();
+        $user       = new UsersModel();
+
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'donates' => $donate->where('status', 1)->find(),
         ];
         echo view('admin/donate-history', $data);
@@ -72,7 +78,9 @@ class Donate extends BaseController
     public function title()
     {
         $donate = new DonateModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'donates' => $donate->where('status', 2)->find(),
         ];
         echo view('admin/donate-title', $data);

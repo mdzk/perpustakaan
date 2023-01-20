@@ -2,13 +2,16 @@
 
 namespace App\Controllers;
 use App\Models\CategoriesModel;
+use App\Models\UsersModel;
 
 class Category extends BaseController
 {
     public function index()
     {
         $category = new CategoriesModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'categories' => $category->findAll(),
         ];
         return view('admin/category', $data);

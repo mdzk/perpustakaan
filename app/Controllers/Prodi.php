@@ -3,13 +3,16 @@
 namespace App\Controllers;
 
 use App\Models\ProdiModel;
+use App\Models\UsersModel;
 
 class Prodi extends BaseController
 {
     public function index()
     {
         $category = new ProdiModel();
+        $user       = new UsersModel();
         $data = [
+            'user'  => $user->find(session()->get('id_users')),
             'prodies' => $category->findAll(),
         ];
         return view('admin/prodi', $data);

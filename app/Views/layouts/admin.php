@@ -127,9 +127,97 @@
         </div>
         <div id="main">
             <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
+                <nav class="navbar navbar-expand navbar-light navbar-top p-0">
+                    <div class="container-fluid ps-0 pe-0">
+                        <a href="#" class="burger-btn d-block">
+                            <i class="bi bi-justify fs-3"></i>
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-lg-0">
+                                <li class="nav-item dropdown me-3">
+                                    <a onclick="notificationRead();" class="nav-link active" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                        <span id="notification-badge" style="left: 80%; top: 15%; display: none;" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                                            99+
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                        <div style="width: 50px; height: 50px;" id="bg-notif" class="d-flex bg-white border border-light rounded-circle">
+                                            <i id="notification" class="bi-bell-fill m-auto fs-4 text-gray-600"></i>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="dropdownMenuButton">
+                                        <li class="dropdown-header">
+                                            <h6>Notifications</h6>
+                                        </li>
+                                        <li class="dropdown-item notification-item">
+                                            <a class="d-flex align-items-center" href="#">
+                                                <div class="notification-icon bg-primary">
+                                                    <i class="bi bi-cart-check"></i>
+                                                </div>
+                                                <div class="notification-text ms-4">
+                                                    <p class="notification-title font-bold">
+                                                        Successfully check out
+                                                    </p>
+                                                    <p class="notification-subtitle font-thin text-sm">
+                                                        Order ID #256
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-item notification-item">
+                                            <a class="d-flex align-items-center" href="#">
+                                                <div class="notification-icon bg-success">
+                                                    <i class="bi bi-file-earmark-check"></i>
+                                                </div>
+                                                <div class="notification-text ms-4">
+                                                    <p class="notification-title font-bold">
+                                                        Homework submitted
+                                                    </p>
+                                                    <p class="notification-subtitle font-thin text-sm">
+                                                        Algebra math homework
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <p class="text-center py-2 mb-0">
+                                                <a href="#">See all notification</a>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="dropdown">
+                                <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="user-menu d-flex">
+                                        <div class="user-name text-end me-3">
+                                            <h6 class="mb-0 text-gray-600"><?= $user['name']; ?></h6>
+                                            <p class="mb-0 text-sm text-gray-600"><?= $user['roles']; ?></p>
+                                        </div>
+                                        <div class="user-img d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="<?= base_url(); ?>/assets/images/faces/1.jpg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem">
+                                    <li>
+                                        <h6 class="dropdown-header">Hello, John!</h6>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                            Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
             </header>
 
             <?= $this->renderSection('content'); ?>
@@ -146,6 +234,13 @@
 
     <script src="<?= base_url(); ?>/assets/js/app.js"></script>
     <script src="<?= base_url(); ?>/assets/js/extensions/jquery.min.js"></script>
+    <script>
+        var wtf = $.ajax({
+            url: "<?= base_url() . '/admin/statistic'; ?>",
+            async: false,
+            dataType: 'json'
+        }).responseJSON;
+    </script>
     <script src="<?= base_url(); ?>/assets/js/pages/dashboard.js"></script>
     <script src="<?= base_url(); ?>/assets/js/extensions/summernote.js"></script>
     <script src="<?= base_url(); ?>/assets/js/extensions/sweetalert2.min.js"></script>
@@ -171,8 +266,52 @@
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
-            alert(JSON.stringify(data));
+            notificationComing();
         });
+
+        function notificationRead() {
+            var el = $('#notification');
+            el.addClass('text-gray-600');
+            el.removeClass('text-primary');
+
+            $('#notification-badge').hide();
+        }
+
+        function notificationComing() {
+            var el = $('#notification');
+            el.addClass('text-primary');
+            el.removeClass('text-gray-600');
+
+            $('#notification-badge').show();
+        }
+
+        // FUNCTION SHOW PRODUCT
+        // function show_notif() {
+        //     $.ajax({
+        //         url: '<?php echo site_url("product/get_product"); ?>',
+        //         type: 'GET',
+        //         async: true,
+        //         dataType: 'json',
+        //         success: function(data) {
+        //             var html = '';
+        //             var count = 1;
+        //             var i;
+        //             for (i = 0; i < data.length; i++) {
+        //                 html += '<tr>' +
+        //                     '<td>' + count++ + '</td>' +
+        //                     '<td>' + data[i].product_name + '</td>' +
+        //                     '<td>' + data[i].product_price + '</td>' +
+        //                     '<td>' +
+        //                     '<a href="javascript:void(0);" class="btn btn-sm btn-info item_edit" data-id="' + data[i].product_id + '" data-name="' + data[i].product_name + '" data-price="' + data[i].product_price + '">Edit</a>' +
+        //                     '<a href="javascript:void(0);" class="btn btn-sm btn-danger item_delete" data-id="' + data[i].product_id + '">Delete</a>' +
+        //                     '</td>' +
+        //                     '</tr>';
+        //             }
+        //             $('.show_product').html(html);
+        //         }
+
+        //     });
+        // }
     </script>
 
     <?php if (session()->getFlashdata('pesan')) : ?>
