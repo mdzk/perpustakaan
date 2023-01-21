@@ -50,16 +50,17 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <?php if ($_SESSION['roles'] == 'staff') : ?>
-                            <li class="sidebar-title">Menu</li>
+                        <li class="sidebar-title">Menu</li>
 
-                            <?php route_to('home') ?>
-                            <li class="sidebar-item <?= get_url(3, '') ? 'active' : '' ?>">
-                                <a href="<?= route_to('home'); ?>" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
+                        <?php route_to('home') ?>
+                        <li class="sidebar-item <?= get_url(3, '') ? 'active' : '' ?>">
+                            <a href="<?= route_to('home'); ?>" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <?php if ($_SESSION['roles'] == 'staff') : ?>
+
 
                             <li class="sidebar-item <?= get_url(3, 'article') ? 'active' : '' ?>">
                                 <a href="<?= route_to('article'); ?>" class='sidebar-link'>
@@ -179,11 +180,11 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem">
                                     <li>
-                                        <h6 class="dropdown-header">Hello, John!</h6>
+                                        <h6 class="dropdown-header">Hello, <?= $user['name']; ?></h6>
                                     </li>
 
                                     <li>
-                                        <a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                        <a class="dropdown-item" href="<?= route_to('logout'); ?>"><i class="icon-mid bi bi-box-arrow-left me-2"></i>
                                             Logout</a>
                                     </li>
                                 </ul>
