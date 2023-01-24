@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 20 Jan 2023 pada 11.11
+-- Waktu pembuatan: 24 Jan 2023 pada 17.39
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -44,7 +44,10 @@ CREATE TABLE `articles` (
 
 INSERT INTO `articles` (`id_articles`, `title`, `description`, `thumbnail`, `date`, `slug`, `id_categories`, `id_users`) VALUES
 (6, 'Competitive Fund Vokasi 2022', '<p>lorem</p>', '1665633574_d93e1e7182cdbed6bdd7.png', '2022-10-12', 'competitive-fund-vokasi-2022', 1, 1),
-(7, 'Kunjungan Industri', '<p>lorem</p>', '1665633650_3ec9649349628013adf3.png', '2022-10-12', 'kunjungan-industri', 1, 1);
+(7, 'Kunjungan Industri', '<p>lorem</p>', '1665633650_3ec9649349628013adf3.png', '2022-10-12', 'kunjungan-industri', 1, 1),
+(12, 'Launching PKM Center dan Pembekalan Polinela Goes to School (PGTS) 2023', '<p><span style=\"color: rgb(61, 61, 61); font-family: Poppins, serif; font-size: 13px;\">Polinela, Selasa (17/1/23). Program Kreativitas Mahasiswa (PKM) Center resmi dibuka oleh Wakil Direktur III Polinela Agung Adi Candra, S.Kh., M.SI. pada hari Selasa 17 Januari 2023 di Gedung Serba Guna (GSG). Kegiatan ini dihadiri oleh Direktur, Ka. Humas, Pengurus UKM Smart, dan mahasiswa penerima beasiswa KIP-K.</span><span id=\"more-6338\" style=\"border: 0px; font-family: Poppins, serif; font-size: 13px; margin: 0px; padding: 0px; outline: 0px; vertical-align: baseline; color: rgb(61, 61, 61);\"></span><br style=\"color: rgb(61, 61, 61); font-family: Poppins, serif; font-size: 13px;\"><span style=\"color: rgb(61, 61, 61); font-family: Poppins, serif; font-size: 13px;\">Dalam laporanya, Ketua UKM Smart Aldenny Rezky Roham menyampaikan bahwa PKM Center akan menjadi pusat informasi dan pelatihan dalam pengusulan PKM. PKM Center Polinela diharapkan menjadi wadah untuk menyatukan tekad dan semangat kuat dalam menggali potensi dan inovasi mahasiswa Polinela pada program PKM-PIMNAS untuk mewujudkan cita-cita besar meraih puncak tertinggi penghargaan di bidang program penalaran yaitu Program Kreativitas Mahasiswa (PKM).</span><br></p>', '1674534683_4893e653051f3847ec48.jpg', '2023-01-24', 'launching-pkm-center-dan-pembekalan-polinela-goes-to-school-pgts-2023', 1, 4),
+(13, 'Polinela Gelar Launching Sistem Penerimaan Mahasiswa Baru Tahun 2023/2024', '<p style=\"color: rgb(171, 178, 191); font-family: &quot;Fira Code&quot;, Consolas, &quot;Courier New&quot;, monospace; font-size: 20px; line-height: 40px; white-space: pre;\"><span style=\"font-family: Arial;\">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate, dolores omnis! Dolore quae, molestias animi quas architecto nulla sunt. Accusantium veritatis ipsa ducimus placeat sit, laudantium magni aut rem veniam corporis eius porro, natus qui minima recusandae quibusdam autem sunt sequi debitis repellat. Iusto fuga obcaecati nisi quasi sit rem autem vel veritatis unde molestiae harum, explicabo illum mollitia voluptatibus? Minima, assumenda neque accusantium voluptatem iure dicta illum illo, molestias, ducimus ipsum delectus quod ut animi minus fugiat eius optio. Nemo autem dolore dicta eveniet fuga facilis tempora quo obcaecati.</span></p>', '1674534780_faf8a4bc7d5ace628b32.jpg', '2023-01-24', 'polinela-gelar-launching-sistem-penerimaan-mahasiswa-baru-tahun-20232024', 1, 4),
+(14, 'Agenda Dies Natalis Ke-38 Th Politeknik Negeri Lampung', '<article id=\"post-4834\" class=\"post-4834 post type-post status-publish format-standard has-post-thumbnail hentry category-agenda\" style=\"margin: 0px 0px 15px; color: rgb(61, 61, 61); font-family: Poppins, serif; font-size: 14px;\"><div class=\"entry-content\" style=\"border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; margin: 15px 0px 0px; padding: 0px; outline: 0px; vertical-align: baseline;\"><p style=\"border: 0px; font-family: inherit; font-size: 1.3rem; font-style: inherit; font-weight: inherit; margin-right: 0px; margin-bottom: 2.30769rem; margin-left: 0px; padding: 0px; outline: 0px; vertical-align: baseline; position: relative; line-height: 1.4em;\">Rangkain acara dan kegiatan Dies Natalis ke-38 tahun Politeknik Negeri Lampung</p></div></article>', '1674534854_54617cf592f59f13249c.jpg', '2023-01-24', 'agenda-dies-natalis-ke-38-th-politeknik-negeri-lampung', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -90,10 +93,11 @@ CREATE TABLE `donate` (
 --
 
 INSERT INTO `donate` (`id_donate`, `donors`, `title`, `author`, `status`, `picture`, `npm`, `id_users`, `id_prodi`, `notification`) VALUES
-(34, NULL, 'Sang pemimpi', 'Andrea Hirata', 0, NULL, 213, 4, 0, 0),
-(36, NULL, 'Belajar Excel', 'Muhammad Dzaky', 0, NULL, 123, 0, 2, 0),
-(37, NULL, 'Belajar PHP', 'Dzaky', 0, NULL, 12, 4, 1, 0),
-(38, NULL, 'Belajar HTML', 'reza', 0, NULL, 12321, 0, 1, 0);
+(41, 'Hanum', 'Codeigniter Vs Laravel', 'David Naista', 0, NULL, 20753014, 0, 0, 2),
+(42, NULL, 'Belajar PHP', 'Reza Oktario', 0, NULL, NULL, 4, 1, 0),
+(44, 'Dzaky', 'Belajar Excel', 'Reza Oktario', 0, NULL, 20753022, 4, 1, 2),
+(45, 'Dzaky', 'Laskar Pelangi', 'Andrea Hirata', 0, NULL, 20753022, 4, 1, 2),
+(46, 'dzaky', 'Sang Pemimpi', 'Andrea Hirata', 0, NULL, 123, 4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -137,7 +141,11 @@ CREATE TABLE `teaching_materials` (
 
 INSERT INTO `teaching_materials` (`id_materials`, `title`, `material`, `description`, `status`, `id_users`, `id_prodi`) VALUES
 (10, 'Agribisnis - Manajemen Pemasaran oleh Fitriani, S.P., M.E.P', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/C-twZZtBD1I\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '-', 1, 0, 3),
-(13, 'ini dokumen', '1674015980_04d9d07bf5f66ad67a75.pdf', 'pdf', 2, 4, 2);
+(14, 'Himbauan Direktur Polinela Terkait UAS dan Tahun Baru 2023', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8n-_NXJrmG8\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>', 'tes', 1, 4, 1),
+(15, 'Kisah Inspiratif Alumni Polinela Sukses Beternak Ayam Broiler', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/cdqftgzTujs\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>', 'tes', 1, 4, 1),
+(16, 'BPP Kewirausahaan', '1674535062_27dfa299c60af8badbb3.pdf', 'tes', 2, 4, 1),
+(17, 'Pemrogramman Mobile Minggu 7', '1674535175_3144224726c27444f6ae.pdf', 'tes', 2, 4, 1),
+(18, 'Jalur Mandiri Politeknik Negeri Lampung 2022', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/vmyCUXGDCLU\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>', 'tes', 1, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -235,7 +243,58 @@ INSERT INTO `visitors` (`id_visitors`, `type`, `created_at`, `id_articles`) VALU
 (970, 1, '2023-01-20 09:57:51', 1),
 (971, 1, '2023-01-20 09:58:03', 1),
 (972, 1, '2023-01-20 09:58:14', 1),
-(973, 1, '2023-01-20 09:59:31', 1);
+(973, 1, '2023-01-20 09:59:31', 1),
+(974, 1, '2023-01-21 13:24:18', 1),
+(975, 1, '2023-01-21 13:24:21', 1),
+(976, 1, '2023-01-21 13:24:30', 1),
+(977, 1, '2023-01-21 14:28:22', 1),
+(978, 1, '2023-01-21 14:28:23', 1),
+(979, 1, '2023-01-21 14:28:33', 1),
+(980, 1, '2023-01-21 14:29:23', 1),
+(981, 1, '2023-01-21 14:29:50', 1),
+(982, 1, '2023-01-21 14:30:22', 1),
+(983, 1, '2023-01-24 04:15:58', 1),
+(984, 1, '2023-01-24 04:15:59', 1),
+(985, 1, '2023-01-24 04:24:05', 1),
+(986, 1, '2023-01-24 04:24:08', 1),
+(987, 1, '2023-01-24 04:24:26', 1),
+(988, 1, '2023-01-24 04:28:11', 1),
+(989, 1, '2023-01-24 04:28:11', 1),
+(990, 2, '2023-01-24 04:28:18', 6),
+(991, 1, '2023-01-24 04:28:24', 1),
+(992, 1, '2023-01-24 04:36:02', 1),
+(993, 1, '2023-01-24 04:38:47', 1),
+(994, 1, '2023-01-24 04:38:51', 1),
+(995, 1, '2023-01-24 04:38:56', 1),
+(996, 1, '2023-01-24 04:40:31', 1),
+(997, 1, '2023-01-24 04:40:39', 1),
+(998, 1, '2023-01-24 04:40:43', 1),
+(999, 1, '2023-01-24 06:36:48', 1),
+(1000, 1, '2023-01-24 06:37:17', 1),
+(1001, 1, '2023-01-24 06:37:31', 1),
+(1002, 1, '2023-01-24 07:31:37', 1),
+(1003, 1, '2023-01-24 07:31:38', 1),
+(1004, 1, '2023-01-24 07:31:40', 1),
+(1005, 1, '2023-01-24 07:31:46', 1),
+(1006, 1, '2023-01-24 08:07:16', 1),
+(1007, 1, '2023-01-24 08:09:50', 1),
+(1008, 1, '2023-01-24 08:09:57', 1),
+(1009, 1, '2023-01-24 08:25:25', 1),
+(1010, 1, '2023-01-24 08:25:30', 1),
+(1011, 2, '2023-01-24 08:25:35', 12),
+(1012, 1, '2023-01-24 08:25:42', 1),
+(1013, 2, '2023-01-24 08:26:44', 12),
+(1014, 2, '2023-01-24 08:26:56', 12),
+(1015, 2, '2023-01-24 08:27:03', 12),
+(1016, 2, '2023-01-24 08:28:08', 12),
+(1017, 2, '2023-01-24 08:28:18', 12),
+(1018, 2, '2023-01-24 08:28:24', 12),
+(1019, 2, '2023-01-24 08:28:26', 12),
+(1020, 2, '2023-01-24 08:28:39', 12),
+(1021, 1, '2023-01-24 09:01:25', 1),
+(1022, 1, '2023-01-24 09:01:58', 1),
+(1023, 1, '2023-01-24 09:02:03', 1),
+(1024, 1, '2023-01-24 09:02:27', 1);
 
 --
 -- Indexes for dumped tables
@@ -293,7 +352,7 @@ ALTER TABLE `visitors`
 -- AUTO_INCREMENT untuk tabel `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id_articles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_articles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `categories`
@@ -305,7 +364,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT untuk tabel `donate`
 --
 ALTER TABLE `donate`
-  MODIFY `id_donate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_donate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT untuk tabel `prodi`
@@ -317,7 +376,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT untuk tabel `teaching_materials`
 --
 ALTER TABLE `teaching_materials`
-  MODIFY `id_materials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_materials` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -329,7 +388,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=974;
+  MODIFY `id_visitors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1025;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
