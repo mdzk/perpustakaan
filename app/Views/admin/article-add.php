@@ -38,7 +38,7 @@
                                             <label for="email-id-vertical">Kategori</label>
                                             <fieldset class="form-group">
 
-                                                <select name='id_prodi' class="form-select" id="basicSelect">
+                                                <select name='id_categories' class="form-select" id="basicSelect">
                                                     <option selected disabled>-- Pilih Kategori --</option>
                                                     <?php foreach ($categories as $category) : ?>
                                                         <option value="<?= $category['id_categories']; ?>"><?= $category['name']; ?></option>

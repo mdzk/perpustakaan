@@ -37,6 +37,8 @@
                                     <?php } else { ?>
                                         <span class="badge bg-light-primary mx-2"><?= $article['name']; ?></span>
                                     <?php } ?>
+                                    <span class="badge bg-light-success mx-2"><?= $article['date']; ?></span>
+
                                 </div>
                             </div>
                         </div>
@@ -77,7 +79,7 @@
                                                         Apakah anda yakin ingin menghapus artikel ini?
                                                     </p>
                                                 </div>
-                                                
+
                                                 <input type="number" hidden value="<?= $article['id_articles']; ?>" name="id_articles">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">

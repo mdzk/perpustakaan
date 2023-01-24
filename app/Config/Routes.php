@@ -98,6 +98,7 @@ $routes->post('/admin/donate/save', 'Donate::save', ['as' => 'donate-save', 'fil
 $routes->post('/admin/donate/delete', 'Donate::delete', ['as' => 'donate-delete', 'filter' => 'auth:staff']);
 $routes->post('/admin/donate/update', 'Donate::update', ['as' => 'donate-update', 'filter' => 'auth:staff']);
 $routes->post('/admin/donate/verify', 'Donate::verify', ['as' => 'donate-verify', 'filter' => 'auth:staff']);
+$routes->get('/admin/donate/verification', 'Donate::verification', ['as' => 'donate-verification', 'filter' => 'auth:staff']);
 
 // Teaching Materials Section
 $routes->get('/admin/materials', 'TeachingMaterials::index', ['as' => 'materials', 'filter' => 'auth:staff']);

@@ -140,28 +140,30 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-lg-0">
                                 <li class="nav-item dropdown me-3">
-                                    <a onclick="notificationRead();" class="nav-link active" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <span id="notification-badge" style="left: 80%; top: 15%; display: none;" class="position-absolute translate-middle badge rounded-pill bg-danger">
-                                            99+
-                                            <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        <div style="width: 50px; height: 50px;" id="bg-notif" class="d-flex bg-white border border-light rounded-circle">
-                                            <i id="notification" class="bi-bell-fill m-auto fs-4 text-gray-600"></i>
-                                        </div>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="dropdownMenuButton">
-                                        <li class="dropdown-header">
-                                            <h6>Notifications</h6>
-                                        </li>
-                                        <div class="notifitem">
+                                    <?php if ($user['roles'] == 'staff') { ?>
+                                        <a onclick="notificationRead();" class="nav-link active" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                            <span id="notification-badge" style="left: 80%; top: 15%; display: none;" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                                                99+
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            <div style="width: 50px; height: 50px;" id="bg-notif" class="d-flex bg-white border border-light rounded-circle">
+                                                <i id="notification" class="bi-bell-fill m-auto fs-4 text-gray-600"></i>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="dropdownMenuButton">
+                                            <li class="dropdown-header">
+                                                <h6>Notifications</h6>
+                                            </li>
+                                            <div class="notifitem">
 
-                                        </div>
-                                        <!-- <li>
+                                            </div>
+                                            <!-- <li>
                                             <p class="text-center py-2 mb-0">
                                                 <a href="#">See all notification</a>
                                             </p>
                                         </li> -->
-                                    </ul>
+                                        </ul>
+                                    <?php } ?>
                                 </li>
                             </ul>
                             <div class="dropdown">
@@ -307,7 +309,7 @@
                     var i;
                     for (i = 0; i < data['data'].length; i++) {
                         html += '<li class="dropdown-item notification-item">' +
-                            '<a class="d-flex align-items-center" href="#">' +
+                            '<a class="d-flex align-items-center" href="/admin/donate/verification">' +
                             '<div class="notification-icon">' +
                             '<i class="bi bi-file-earmark-medical-fill"></i>' +
                             '</div>' +
@@ -317,7 +319,7 @@
                             '</p>' +
                             '<p class="notification-subtitle font-thin text-sm">' +
                             data['data'][i].donors +
-                            '</p>' +
+                            ' Mengajukan Donasi Baru</p>' +
                             '</div>' +
                             '</a>' +
                             '</li>';

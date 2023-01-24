@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\ArticlesModel;
 use App\Models\CategoriesModel;
 use App\Models\UsersModel;
@@ -13,7 +14,7 @@ class Article extends BaseController
         $user       = new UsersModel();
         $data = [
             'user'  => $user->find(session()->get('id_users')),
-            'articles' => $article->join('categories', 'categories.id_categories = articles.id_categories')->findAll(),
+            'articles' => $article->join('categories', 'categories.id_categories = articles.id_categories')->orderBy('date', 'desc')->findAll(),
         ];
         echo view('admin/article', $data);
     }
@@ -61,7 +62,7 @@ class Article extends BaseController
         $id = $this->request->getVar('id_articles');
         $data = $article->find($id);
         if ($data['thumbnail'] != 'default.jpg') {
-            unlink('img/'. $data['thumbnail']);
+            unlink('img/' . $data['thumbnail']);
         }
 
         $article->delete($id);
@@ -79,7 +80,7 @@ class Article extends BaseController
             'article' => $article->join('categories', 'categories.id_categories = articles.id_categories')->find($id),
             'categories' => $category->findAll(),
         ];
-        
+
         return view('admin/article-edit', $data);
     }
 
@@ -87,14 +88,14 @@ class Article extends BaseController
     {
         $article = new ArticlesModel();
         $data = $article->find($this->request->getVar('id_articles'));
-        
+
         $thumbnail = $this->request->getFile('thumbnail');
         if ($thumbnail == '') {
             $thumbnailName = $data['thumbnail'];
         } else {
             $thumbnailName = $thumbnail->getRandomName();
             $thumbnail->move('img', $thumbnailName);
-            unlink('img/'. $data['thumbnail']);
+            unlink('img/' . $data['thumbnail']);
         }
 
         $slug = url_title($this->request->getPost('title'), '-', true);

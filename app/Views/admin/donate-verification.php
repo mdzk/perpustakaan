@@ -6,8 +6,8 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Donasi Buku</h3>
-                <p class="text-subtitle text-muted">Menampilkan semua buku yang dibutuhkan pada perpustakaan.</p>
+                <h3>Verifikasi Donasi</h3>
+                <p class="text-subtitle text-muted">Menampilkan semua daftar donasi yang akan di verifikasi.</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -24,10 +24,11 @@
     <section class="section">
         <div class="row" id="basic-table">
             <div class="col-12 col-md-12">
-                <button class="btn btn-primary rounded-pill mb-2" data-bs-toggle="modal" data-bs-target="#tambahkategori">+ Buku baru</button>
-                <a class="btn rounded-pill mb-2" href="<?= route_to('donate-title'); ?>">Verifikasi Judul</a>
-                <a class="btn rounded-pill mb-2" href="<?= route_to('donate-verification'); ?>">Verifikasi Donasi</a>
-                <a class="btn rounded-pill mb-2" href="<?= route_to('donate-history'); ?>">Riwayat donasi</a>
+                <a class="btn btn-primary rounded-pill mb-2 btn-icon action-icon" href="<?= route_to('donate'); ?>">
+                    <span class="fonticon-wrap me-2">
+                        <i class="bi bi-chevron-left"></i>
+                    </span> Kembali
+                </a>
 
                 <div class="modal fade text-left modal-borderless" id="tambahkategori">
                     <div class="modal-dialog" role="document">
@@ -79,7 +80,7 @@
                                         <tr>
                                             <th>Judul</th>
                                             <th>Pengarang</th>
-                                            <!-- <th>Donatur</th> -->
+                                            <th>Donatur</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -88,29 +89,29 @@
                                             <tr>
                                                 <td class="text-bold-500"><?= $donate['title']; ?></td>
                                                 <td class="text-bold-500"><?= $donate['author']; ?></td>
-                                                <!-- <td class="text-bold-500">
+                                                <td class="text-bold-500">
                                                     <?php if ($donate['donors'] == '') { ?>
                                                         <span class="badge bg-light-danger mx-2">Belum terdapat donatur</span>
                                                     <?php } else {; ?>
                                                         <span class="badge bg-light-primary mx-2"><?= $donate['donors']; ?></span>
                                                     <?php }; ?>
-                                                </td> -->
+                                                </td>
                                                 <td class="text-bold-500">
                                                     <ul class="list-inline m-0 d-flex">
-                                                        <!-- <li class="list-inline-item mail-delete">
+                                                        <li class="list-inline-item mail-delete">
                                                             <button type="button" class="btn btn-light-success btn-icon action-icon" data-bs-toggle="modal" data-bs-target="#verifikasikategori<?= $donate['id_donate']; ?>">
                                                                 <span class="fonticon-wrap">
                                                                     <i class="bi bi-check-lg"></i>
                                                                 </span>
                                                             </button>
-                                                        </li> -->
-                                                        <li class="list-inline-item mail-delete">
+                                                        </li>
+                                                        <!-- <li class="list-inline-item mail-delete">
                                                             <button type="button" class="btn btn-light-primary btn-icon action-icon" data-bs-toggle="modal" data-bs-target="#editkategori<?= $donate['id_donate']; ?>">
                                                                 <span class="fonticon-wrap">
                                                                     <i class="bi bi-pencil-fill"></i>
                                                                 </span>
                                                             </button>
-                                                        </li>
+                                                        </li> -->
                                                         <li class="list-inline-item mail-unread">
                                                             <button type="button" class="btn btn-light-danger btn-icon action-icon" data-bs-toggle="modal" data-bs-target="#hapuskategori<?= $donate['id_donate']; ?>">
                                                                 <span class="fonticon-wrap d-inline">

@@ -8,6 +8,7 @@
             <div class="mx-auto d-flex flex-lg-row flex-column hero pb-0">
                 <div class="">
                     <span class="badge bg-light-primary mb-3 fs-5"><?= $article['name']; ?></span>
+                    <span class="badge bg-light-success mb-3 fs-5"><?= $article['date']; ?></span>
                     <h1 class="title-text-big text-white fs-1"><?= $article['title']; ?></h1>
                 </div>
             </div>

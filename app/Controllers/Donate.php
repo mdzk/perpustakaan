@@ -122,4 +122,17 @@ class Donate extends BaseController
         session()->setFlashdata('pesan', 'Buku berhasil diverifikasi');
         return redirect()->to('admin/donate');
     }
+
+    public function verification()
+    {
+        $donate = new DonateModel();
+        $prodi = new ProdiModel();
+        $user       = new UsersModel();
+        $data = [
+            'user'  => $user->find(session()->get('id_users')),
+            'prodies' => $prodi->findAll(),
+            'donates' => $donate->where(['status' => 0, 'donors IS NOT NULL' => NULL, false])->findAll(),
+        ];
+        echo view('admin/donate-verification', $data);
+    }
 }
